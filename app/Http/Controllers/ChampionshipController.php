@@ -22,6 +22,12 @@ class ChampionshipController extends Controller
         return view('app.painel', ['championship' => $championship]);
     }
 
+    public function campeonato($id) {
+        $championship = Championship::findOrFail($id);
+
+        return view('site.campeonato', ['championship' => $championship]);
+    }
+
     public function store(Request $request) {
         $championship = new Championship;
         $forma = $request->forma;
