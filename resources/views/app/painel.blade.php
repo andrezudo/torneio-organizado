@@ -19,13 +19,15 @@ $rankings = '';
                             <p>{{ $championship->localization }} | 30/02/2021</p>
                         </div>
                         <div class="">
-                          <button type="button" class="btn btn-register" data-bs-toggle="modal" data-bs-target="#modalEditCamp{{$championship->id}}">
+                          <a href="/site/campeonato/{{$championship->id}}" class="btn btn-dahsboard mx-2 my-2"><b><i class="fa-solid fa-arrow-pointer"></i> Página</b></a>
+
+                          <button type="button" class="btn btn-register mx-2 my-2" data-bs-toggle="modal" data-bs-target="#modalEditCamp{{$championship->id}}">
                             <i class="fa-solid fa-pen"></i> Editar
                           </button>
                           <form style="display: inline-block" action="/app/championship/{{$championship->id}}" method="POST">
                               @csrf
                               @method('DELETE')
-                              <button type="submit" class="btn btn-danger"><i class="fa-solid fa-trash"></i> Apagar</button>
+                              <button type="submit" class="btn btn-danger mx-2 my-2"><i class="fa-solid fa-trash"></i> Apagar</button>
                           </form>
                         </div>
                       </div>

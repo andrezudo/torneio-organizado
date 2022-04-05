@@ -51,10 +51,10 @@
                         </a>
                     </form>
                 @else
-                    <a href="{{ route('login') }}" class="btn btn-primary btn-login">Entrar</a>
+                    <a href="{{ route('login') }}" class="btn btn-login"><b>Entrar</b></a>
 
                     @if (Route::has('register'))
-                        <a href="{{ route('register') }}" class="ml-4 btn btn-primary btn-register">Cadastrar</a>
+                        <a href="{{ route('register') }}" class="ml-4 btn btn-register"><b>Cadastrar</b></a>
                     @endif
                 @endauth
             @endif

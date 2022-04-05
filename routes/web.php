@@ -32,7 +32,7 @@ Route::get('/', function(){
 
 Route::prefix('/app')->group(function(){
     Route::delete('/championship/{id}', [ChampionshipController::class, 'destroy']);
-    
+
     Route::put('/update/{id}', [ChampionshipController::class, 'update'])->middleware('auth');
 
     Route::post('/championship', [ChampionshipController::class, 'store']);
@@ -58,6 +58,11 @@ Route::prefix('/app')->group(function(){
     Route::get('/rankings', function(){
         return view('app.rankings');
     })->middleware('auth');
+});
+
+Route::prefix('/site')->group(function(){
+
+    Route::get('/campeonato/{id}', [ChampionshipController::class, 'campeonato']);
 });
 
 
