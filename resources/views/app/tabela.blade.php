@@ -13,6 +13,7 @@ $rankings = '';
 @section('content')
                 
                   <div class="container">
+                    
                         <div class="table-responsive mt-5">
                             <table class="table text-white">
                                 <thead>
