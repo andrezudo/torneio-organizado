@@ -39,34 +39,15 @@ $rankings = '';
                       </div>
 
                       <div class="row">
+                        @foreach ($teams as $team)
                           <div class="col-lg-3 col-md-4 col-sm-6">
                             <a href="/app/players" class="text-decoration-none">
                               <div class="card p-2 text-center m-3">
-                                <i class="fa-solid fa-shield-halved"></i> <b>Time 1</b>
+                                <i class="fa-solid fa-shield-halved"></i> <b>{{$team->name}}</b>
                               </div>
                             </a>  
                           </div>
-                          <div class="col-lg-3 col-md-4 col-sm-6">
-                            <a href="/app/players" class="text-decoration-none">
-                              <div class="card p-2 text-center m-3">
-                                <i class="fa-solid fa-shield-halved"></i> <b>Time 2</b>
-                              </div>
-                            </a>
-                          </div>
-                          <div class="col-lg-3 col-md-4 col-sm-6">
-                            <a href="/app/players" class="text-decoration-none">
-                              <div class="card p-2 text-center m-3">
-                                <i class="fa-solid fa-shield-halved"></i> <b>Time 3</b>
-                              </div>
-                            </a>
-                          </div>
-                          <div class="col-lg-3 col-md-4 col-sm-6">
-                            <a href="/app/players" class="text-decoration-none">
-                              <div class="card p-2 text-center m-3">
-                                <i class="fa-solid fa-shield-halved"></i> <b>Time 4</b>
-                              </div>
-                            </a>
-                          </div>
+                        @endforeach
                       </div>
                   </div>
 

@@ -18,15 +18,21 @@ class ChampionshipController extends Controller
     }
 
     public function painel($id) {
+        $user = auth()->user();
+        $teams = $user->teams;
+
         $championship = Championship::findOrFail($id);
 
-        return view('app.painel', ['championship' => $championship]);
+        return view('app.painel', ['championship' => $championship, 'teams' => $teams]);
     }
 
     public function campeonato($id) {
+        $user = auth()->user();
+        $teams = $user->teams;
+
         $championship = Championship::findOrFail($id);
 
-        return view('site.campeonato', ['championship' => $championship]);
+        return view('site.campeonato', ['championship' => $championship, 'teams' => $teams]);
     }
 
     public function store(Request $request) {
