@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Championship;
+use App\Models\Team;
 
 class ChampionshipController extends Controller
 {

@@ -43,6 +43,7 @@ Route::prefix('/app')->group(function(){
     
     //Route::get('/teams', [TeamController::class, 'index'])->middleware('auth');
     Route::get('/teams', [TeamController::class, 'teams'])->middleware('auth');
+    Route::post('/team', [TeamController::class, 'store']);
 
     Route::get('/players', function(){
         return view('app.players');

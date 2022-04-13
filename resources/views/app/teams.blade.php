@@ -46,11 +46,11 @@ $rankings = '';
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
-                            <form action="/championship" method="POST">
+                            <form action="/app/team" method="POST">
                                 @csrf
                                 <div class="mb-3">
                                   <label for="title" class="form-label">Time:</label>
-                                  <input type="text" class="form-control" id="title" name="title" placeholder="Nome do time">
+                                  <input type="text" class="form-control" id="name" name="name" placeholder="Nome do time">
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>

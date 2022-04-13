@@ -20,4 +20,16 @@ class TeamController extends Controller
 
         return view('app.teams', ['teams' => $teams]);
     }
+
+    public function store(Request $request) {
+        $team = new Team;
+        $team->name = $request->name;
+
+        $user = auth()->user();
+        $team->user_id = $user->id;
+
+        $team->save();
+
+        return redirect('/app/teams');
+    }
 }
