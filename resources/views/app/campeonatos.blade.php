@@ -33,7 +33,7 @@
                                     <button type="submit" class="btn btn-dahsboard"><ion-icon name="trash-outline"></ion-icon>Apagar</button>
                                 </form>
                                 <a href="/app/painel/{{ $championship->id }}" class="btn btn-register">
-                                    acessar
+                                    Acessar
                                 </a>
                             </div>
                         </div>

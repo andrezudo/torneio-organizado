@@ -11,6 +11,7 @@ header{
 .btn-dahsboard, .btn-login, .btn-register{
     background: #8BC34A;
     border-color: #8BC34A;
+    font-weight: 700;
 }
 .btn-dahsboard:hover, .btn-login:hover, .btn-register:hover{
     background: #388E3C;

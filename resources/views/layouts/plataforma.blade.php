@@ -33,7 +33,7 @@
             <span class="navbar-toggler-icon"></span>
           </button>
           <a class="navbar-brand" href="/">
-              <img src="/img/logo4.png" alt="" width="60%">
+              <img src="/img/logo4.png" alt="" width="120">
           </a>
           <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
