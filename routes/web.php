@@ -41,7 +41,8 @@ Route::prefix('/app')->group(function(){
 
     Route::get('/painel/{id}', [ChampionshipController::class, 'painel'])->middleware('auth');
     
-    Route::get('/teams', [TeamController::class, 'index'])->middleware('auth');
+    //Route::get('/teams', [TeamController::class, 'index'])->middleware('auth');
+    Route::get('/teams', [TeamController::class, 'teams'])->middleware('auth');
 
     Route::get('/players', function(){
         return view('app.players');

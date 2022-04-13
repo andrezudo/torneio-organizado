@@ -63,7 +63,7 @@ class User extends Authenticatable
         return $this->hasMany('App\Models\Championship');
     }
 
-    public function team() {
+    public function teams() {
         return $this->hasMany('App\Models\Team');
     }
 }
