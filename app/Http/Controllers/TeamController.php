@@ -38,4 +38,10 @@ class TeamController extends Controller
 
         return redirect('/app/teams');
     }
+
+    public function update(Request $request){
+        Team::findOrFail($request->id)->update($request->all());
+
+        return redirect('/app/teams');
+    }
 }

@@ -45,6 +45,7 @@ Route::prefix('/app')->group(function(){
     Route::get('/teams', [TeamController::class, 'teams'])->middleware('auth');
     Route::post('/team', [TeamController::class, 'store']);
     Route::delete('/team/{id}', [TeamController::class, 'destroy']);
+    Route::put('/update-team/{id}', [TeamController::class, 'update'])->middleware('auth');
 
     Route::get('/players', function(){
         return view('app.players');
