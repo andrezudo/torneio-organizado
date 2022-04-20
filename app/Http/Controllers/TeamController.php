@@ -32,4 +32,10 @@ class TeamController extends Controller
 
         return redirect('/app/teams');
     }
+
+    public function destroy($id) {
+        Team::findOrFail($id)->delete();
+
+        return redirect('/app/teams');
+    }
 }
