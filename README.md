@@ -1,4 +1,4 @@
-<p align="center"><img src="public/img/logo4.png" width="400"></p>
+<p align="center"><img src="public/img/logo4.png" width="200"></p>
 
 ## Torneio Organizado
 ### Uma plataforma Web para gerenciamento de campeonatos de futebol
