@@ -71,8 +71,10 @@ Route::prefix('/site')->group(function(){
 
 
 
-
-
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
+    return view('home');
+})->name('home');
+
+/*Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
-})->name('dashboard');
+})->name('dashboard');*/
