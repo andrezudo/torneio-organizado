@@ -30,7 +30,7 @@ $rankings = '';
                               <div class="card p-2 text-center m-3">
                                 <i class="fa-solid fa-shield-halved"></i> <b>{{$team->name}}</b>
                                 <div class="">
-                                  <a href="/app/players" class="btn btn-register mx-2 my-2 btn-sm"><b><i class="fa-solid fa-eye"></i></b></a>
+                                  <a href="/app/players/{{$team->id}}" class="btn btn-register mx-2 my-2 btn-sm"><b><i class="fa-solid fa-eye"></i></b></a>
         
                                   <button type="button" class="btn btn-warning mx-2 my-2 btn-sm" data-bs-toggle="modal" data-bs-target="#modalEditTime{{$team->id}}">
                                     <i class="fa-solid fa-pen"></i>
