@@ -20,4 +20,18 @@ class PlayerController extends Controller
 
         return view('app.players', ['players' => $players]);
     }
+
+    public function update(Request $request){
+        Player::findOrFail($request->id)->update($request->all());
+        $team = Player::findOrFail($request->id)->team_id;
+
+        return redirect('/app/teams');
+    }
+
+    public function destroy($id) {
+        Player::findOrFail($id)->delete();
+
+        return redirect('/app/teams');
+    }
+
 }
