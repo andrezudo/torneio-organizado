@@ -41,7 +41,7 @@ $rankings = '';
                       <div class="row">
                         @foreach ($teams as $team)
                           <div class="col-lg-3 col-md-4 col-sm-6">
-                            <a href="/app/players" class="text-decoration-none">
+                            <a href="/app/players/{{$team->id}}" class="text-decoration-none">
                               <div class="card p-2 text-center m-3">
                                 <i class="fa-solid fa-shield-halved"></i> <b>{{$team->name}}</b>
                               </div>
