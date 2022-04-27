@@ -52,6 +52,8 @@ Route::prefix('/app')->group(function(){
         return view('app.players');
     })->middleware('auth');*/
     Route::get('/players/{id}', [PlayerController::class, 'players'])->middleware('auth');
+    Route::put('/update-player/{id}', [PlayerController::class, 'update'])->middleware('auth');
+    Route::delete('/delete-player/{id}', [PlayerController::class, 'destroy']);
 
 
     Route::get('/tabela', function(){
