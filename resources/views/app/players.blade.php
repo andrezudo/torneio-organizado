@@ -30,25 +30,31 @@ $rankings = '';
 
                       @foreach ($players as $player)
                         <div class="d-flex justify-content-between">
-                          <a type="button" data-bs-toggle="modal" data-bs-target="#palyerModalEdit"><i class="fa-solid fa-user"></i> {{$player->name}}</a>
-                          <a href="#" class="btn btn-danger"><i class="fa-solid fa-trash"></i></a>
+                          <a type="button" data-bs-toggle="modal" data-bs-target="#palyerModalEdit{{$player->id}}"><i class="fa-solid fa-user"></i> {{$player->name}}</a>
+                          <form style="display: inline-block" action="/app/delete-player/{{$player->id}}" method="POST">
+                              @csrf
+                              @method('DELETE')
+                              <button type="submit" class="btn btn-danger mx-2 my-2 btn-sm"><i class="fa-solid fa-trash"></i></button>
+                          </form>
+                          <!--<a href="#" class="btn btn-danger"><i class="fa-solid fa-trash"></i></a>-->
                         </div>
                         <hr>
 
                         <!-- Modal -->
-                        <div class="modal fade" id="palyerModalEdit" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal fade" id="palyerModalEdit{{$player->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                           <div class="modal-dialog">
                           <div class="modal-content">
                               <div class="modal-header">
-                              <h5 class="modal-title" id="exampleModalLabel">Editar jogador</h5>
+                              <h5 class="modal-title text-black" id="exampleModalLabel">Editar jogador</h5>
                               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                               </div>
                               <div class="modal-body">
-                                  <form action="/championship" method="POST">
+                                  <form action="/app/update-player/{{ $player->id }}" method="POST" enctype="multipart/form-data">
                                       @csrf
+                                      @method('PUT')
                                       <div class="mb-3">
                                         <label for="title" class="form-label">Jogador:</label>
-                                        <input type="text" class="form-control" id="title" name="title" placeholder="Nome do jogador">
+                                        <input type="text" class="form-control" id="name" name="name" placeholder="Nome do jogador" value="{{ $player->name }}">
                                       </div>
                                       <div class="modal-footer">
                                           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
