@@ -53,7 +53,8 @@ Route::prefix('/app')->group(function(){
     })->middleware('auth');*/
     Route::get('/players/{id}', [PlayerController::class, 'players'])->middleware('auth');
     Route::put('/update-player/{id}', [PlayerController::class, 'update'])->middleware('auth');
-    Route::delete('/delete-player/{id}', [PlayerController::class, 'destroy']);
+    Route::delete('/delete-player/{id}', [PlayerController::class, 'destroy'])->middleware('auth');
+    Route::post('/player', [PlayerController::class, 'store'])->middleware('auth');
 
 
     Route::get('/tabela', function(){
