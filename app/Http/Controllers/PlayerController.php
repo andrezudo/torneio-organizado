@@ -25,13 +25,16 @@ class PlayerController extends Controller
         Player::findOrFail($request->id)->update($request->all());
         $team = Player::findOrFail($request->id)->team_id;
 
-        return redirect('/app/teams');
+        //return redirect('/app/teams');
+        return redirect()->route('players', ['id' => $team]);
     }
 
     public function destroy($id) {
+        $team = Player::findOrFail($id)->team_id;
         Player::findOrFail($id)->delete();
 
-        return redirect('/app/teams');
+        //return redirect('/app/teams');
+        return redirect()->route('players', ['id' => $team]);
     }
 
     public function store(Request $request) {
@@ -41,7 +44,8 @@ class PlayerController extends Controller
 
         $player->save();
 
-        return redirect('/app/teams');
+        return redirect()->route('players', ['id' => $request->team_id]);
+        
     }
 
 }
