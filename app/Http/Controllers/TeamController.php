@@ -27,6 +27,7 @@ class TeamController extends Controller
 
         $user = auth()->user();
         $team->user_id = $user->id;
+        $team->championship_id = 1;
 
         $team->save();
 
