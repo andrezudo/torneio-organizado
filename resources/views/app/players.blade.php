@@ -24,7 +24,7 @@ $rankings = '';
                       </div>
                   </div>
 
-                  <div class="container text-white">
+                  <div class="container text-white mb-5">
                       <h3>Jogadores:</h3>
                       <hr>
 
