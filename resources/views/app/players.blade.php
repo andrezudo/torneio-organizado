@@ -15,7 +15,7 @@ $rankings = '';
                   <div class="container text-white">
                       <div class="row mt-5 mb-4 ">
                         <div class="d-flex justify-content-between mb-5">
-                          <h2>Nome do time</h2>
+                          <h2>{{$team->name}}</h2>
 
                           <button type="button" class="btn btn-register" data-bs-toggle="modal" data-bs-target="#palyerModal">
                             <i class="fa-solid fa-plus"></i> Adicionar jogador
@@ -68,38 +68,6 @@ $rankings = '';
 
                       @endforeach
 
-                      <!--
-                      <div class="d-flex justify-content-between">
-                        <a type="button" data-bs-toggle="modal" data-bs-target="#palyerModal"><i class="fa-solid fa-user"></i> Fulano</a>
-                        <a href="#" class="btn btn-danger"><i class="fa-solid fa-trash"></i></a>
-                      </div>
-                      <hr>
-                      <div class="d-flex justify-content-between">
-                        <a type="button" data-bs-toggle="modal" data-bs-target="#palyerModal"><i class="fa-solid fa-user"></i> Caça Rato</a>
-                        <a href="#" class="btn btn-danger"><i class="fa-solid fa-trash"></i></a>
-                      </div>
-                      <hr>
-                      <div class="d-flex justify-content-between">
-                        <a type="button" data-bs-toggle="modal" data-bs-target="#palyerModal"><i class="fa-solid fa-user"></i> Pica-Pau</a>
-                        <a href="#" class="btn btn-danger"><i class="fa-solid fa-trash"></i></a>
-                      </div>
-                      <hr>
-                      <div class="d-flex justify-content-between">
-                        <a type="button" data-bs-toggle="modal" data-bs-target="#palyerModal"><i class="fa-solid fa-user"></i> Lulinha</a>
-                        <a href="#" class="btn btn-danger"><i class="fa-solid fa-trash"></i></a>
-                      </div>
-                      <hr>
-                      <div class="d-flex justify-content-between">
-                        <a type="button" data-bs-toggle="modal" data-bs-target="#palyerModal"><i class="fa-solid fa-user"></i> Fred</a>
-                        <a href="#" class="btn btn-danger"><i class="fa-solid fa-trash"></i></a>
-                      </div>
-                      <hr>
-                      <div class="d-flex justify-content-between">
-                        <a type="button" data-bs-toggle="modal" data-bs-target="#palyerModal"><i class="fa-solid fa-user"></i> Nelson</a>
-                        <a href="#" class="btn btn-danger"><i class="fa-solid fa-trash"></i></a>
-                      </div>
-                      <hr>
-                    -->
                   </div>
 
                   <!-- Modal -->
@@ -111,11 +79,12 @@ $rankings = '';
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
-                            <form action="/championship" method="POST">
+                            <form action="/app/player" method="POST">
                                 @csrf
                                 <div class="mb-3">
                                   <label for="title" class="form-label">Jogador:</label>
-                                  <input type="text" class="form-control" id="title" name="title" placeholder="Nome do jogador">
+                                  <input type="text" class="form-control" id="name" name="name" placeholder="Nome do jogador">
+                                  <input type="text" class="form-control" id="team_id" name="team_id" value="{{$team->id}}" style="display: none;">
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>

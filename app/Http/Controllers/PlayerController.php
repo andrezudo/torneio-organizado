@@ -18,7 +18,7 @@ class PlayerController extends Controller
         $team = Team::findOrFail($id);
         $players = $team->players;
 
-        return view('app.players', ['players' => $players]);
+        return view('app.players', ['players' => $players, 'team' => $team]);
     }
 
     public function update(Request $request){
@@ -30,6 +30,16 @@ class PlayerController extends Controller
 
     public function destroy($id) {
         Player::findOrFail($id)->delete();
+
+        return redirect('/app/teams');
+    }
+
+    public function store(Request $request) {
+        $player = new Player;
+        $player->name = $request->name;
+        $player->team_id = $request->team_id;
+
+        $player->save();
 
         return redirect('/app/teams');
     }
