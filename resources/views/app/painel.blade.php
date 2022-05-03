@@ -17,6 +17,7 @@ $rankings = '';
                         <div class="text-white">
                             <h2>{{ $championship->title }}</h2>
                             <p>{{ $championship->localization }} | 30/02/2021</p>
+                            <p><i class="fa-solid fa-circle-dollar"></i> Premiação: </p>
                         </div>
                         <div class="">
                           <a href="/site/campeonato/{{$championship->id}}" class="btn btn-dahsboard mx-2 my-2"><b><i class="fa-solid fa-arrow-pointer"></i> Página</b></a>

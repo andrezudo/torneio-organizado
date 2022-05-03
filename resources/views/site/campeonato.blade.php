@@ -12,6 +12,7 @@
                 <div class="text-white">
                     <h2>{{ $championship->title }}</h2>
                     <p>{{ $championship->localization }} | 30/02/2021</p>
+                    <p>Premiação: </p>
                 </div>
 
                 <div class="container">
