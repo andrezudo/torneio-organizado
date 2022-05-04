@@ -16,8 +16,10 @@ $rankings = '';
                       <div class="d-flex justify-content-between mt-5">
                         <div class="text-white">
                             <h2>{{ $championship->title }}</h2>
-                            <p>{{ $championship->localization }} | 30/02/2021</p>
-                            <p><i class="fa-solid fa-circle-dollar"></i> Premiação: </p>
+                            <p><i class="fa-solid fa-location-dot"></i> {{ $championship->localization }} | <i class="fa-solid fa-calendar-day"></i> 30/02/2021</p>
+                            @if ($championship->award != '')
+                                <p><i class="fa-solid fa-dollar-sign"></i> Premiação: R${{ $championship->award }},00</p>
+                            @endif
                         </div>
                         <div class="">
                           <a href="/site/campeonato/{{$championship->id}}" class="btn btn-dahsboard mx-2 my-2"><b><i class="fa-solid fa-arrow-pointer"></i> Página</b></a>
@@ -87,6 +89,10 @@ $rankings = '';
                                   <div class="mb-3">
                                       <label for="localization" class="form-label">Local:</label>
                                       <input type="text" class="form-control" id="localization" name="localization" placeholder="Onde ocorrerá o Campeonato" value="{{ $championship->localization }}">
+                                  </div>
+                                  <div class="mb-3">
+                                      <label for="award" class="form-label">Valor da premiação:</label>
+                                      <input type="text" class="form-control" id="award" name="award" placeholder="Ex: 2500" value="{{ $championship->award }}">
                                   </div>
                                   <div class="mb-3">
                                       <label for="modality" class="form-label">Modalidade:</label>
