@@ -41,6 +41,11 @@ class ChampionshipController extends Controller
         
         $championship->title = $request->title;
         $championship->localization = $request->localization;
+        if ($request->award == '') {
+            $championship->award = '';
+        }else {
+            $championship->award = $request->award;
+        }
         $championship->modality = $request->modality;
         if ($forma == '1') {
             $championship->mata_mata = '1';
