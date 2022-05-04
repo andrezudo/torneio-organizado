@@ -60,6 +60,10 @@
                                             <input type="text" class="form-control" id="localization" name="localization" placeholder="Onde ocorrerá o Campeonato" value="{{ $championship->localization }}">
                                         </div>
                                         <div class="mb-3">
+                                            <label for="award" class="form-label">Valor da premiação:</label>
+                                            <input type="text" class="form-control" id="award" name="award" placeholder="Ex: 2500" value="{{ $championship->award }}">
+                                        </div>
+                                        <div class="mb-3">
                                             <label for="modality" class="form-label">Modalidade:</label>
                                             <select class="form-select" id="modality" name="modality" aria-label="Default select example" value="{{ $championship->modality }}">
                                                 <option selected value="futebol">Futebol</option>
@@ -121,6 +125,10 @@
                         <div class="mb-3">
                             <label for="localization" class="form-label">Local:</label>
                             <input type="text" class="form-control" id="localization" name="localization" placeholder="Onde ocorrerá o Campeonato">
+                        </div>
+                        <div class="mb-3">
+                            <label for="award" class="form-label">Valor da premiação:</label>
+                            <input type="text" class="form-control" id="award" name="award" placeholder="Ex: 2500">
                         </div>
                         <div class="mb-3">
                             <label for="modality" class="form-label">Modalidade:</label>
