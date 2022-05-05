@@ -43,7 +43,7 @@ Route::prefix('/app')->group(function(){
     Route::get('/painel/{id}', [ChampionshipController::class, 'painel'])->middleware('auth');
     
     //Route::get('/teams', [TeamController::class, 'index'])->middleware('auth');
-    Route::get('/teams', [TeamController::class, 'teams'])->middleware('auth');
+    Route::get('/teams/{id}', [TeamController::class, 'teams'])->middleware('auth');
     Route::post('/team', [TeamController::class, 'store']);
     Route::delete('/team/{id}', [TeamController::class, 'destroy']);
     Route::put('/update-team/{id}', [TeamController::class, 'update'])->middleware('auth');

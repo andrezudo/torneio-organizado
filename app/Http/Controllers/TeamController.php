@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Team;
+use App\Models\Championship;
 
 class TeamController extends Controller
 {
@@ -13,10 +14,11 @@ class TeamController extends Controller
         return view('app.teams',['teams' => $teams]);
     }
 
-    public function teams() {
+    public function teams($id) {
 
-        $user = auth()->user();
-        $teams = $user->teams;    
+        //$user = auth()->user();
+        $championship = Championship::findOrFail($id);
+        $teams = $championship->teams;    
 
         return view('app.teams', ['teams' => $teams]);
     }

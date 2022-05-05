@@ -14,4 +14,8 @@ class Championship extends Model
     public function user() {
         return $this->belongsTo('App\Models\User');
     }
+
+    public function teams() {
+        return $this->hasMany('App\Models\Team');
+    }
 }
