@@ -62,7 +62,7 @@
                 <div class="position-sticky pt-3">
                   <ul class="nav flex-column">
                     <li class="nav-item">
-                      <a class="nav-link <?php echo $inicio ?>" aria-current="page" href="#">
+                        <a class="nav-link <?php echo $inicio ?>" aria-current="page" href="/app/painel/{{session('championship')->id}}">
                         <i class="fas fa-home"></i>
                         Inicio
                       </a>

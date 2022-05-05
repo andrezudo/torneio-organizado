@@ -17,11 +17,13 @@ class ChampionshipController extends Controller
         return view('app.campeonatos', ['championships' => $championships]);
     }
 
-    public function painel($id) {
+    public function painel(Request $request, $id) {
         $user = auth()->user();
         $teams = $user->teams;
 
         $championship = Championship::findOrFail($id);
+
+        $request->session()->put('championship', $championship);
 
         return view('app.painel', ['championship' => $championship, 'teams' => $teams]);
     }
