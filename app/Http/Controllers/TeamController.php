@@ -14,11 +14,11 @@ class TeamController extends Controller
         return view('app.teams',['teams' => $teams]);
     }
 
-    public function teams(Request $request) {
+    public function teams($id) {
 
         //$user = auth()->user();
-        //$championship = Championship::findOrFail($id);
-        $championship = $request->session()->get('championship');
+        $championship = Championship::findOrFail($id);
+        //$championship = $request->session()->get('championship');
         $teams = $championship->teams;    
 
         return view('app.teams', ['teams' => $teams]);
@@ -34,18 +34,25 @@ class TeamController extends Controller
 
         $team->save();
 
-        return redirect('/app/teams');
+        return redirect()->route('teams', ['id' => $request->championship_id]);
+        //return redirect('/app/teams');
     }
 
     public function destroy($id) {
+        $team = Team::findOrFail($id);
+        $championship_id = $team->championship_id;
         Team::findOrFail($id)->delete();
 
-        return redirect('/app/teams');
+        return redirect()->route('teams', ['id' => $championship_id]);
+        //return redirect('/app/teams');
     }
 
     public function update(Request $request){
         Team::findOrFail($request->id)->update($request->all());
+        $team = Team::findOrFail($request->id);
+        $championship_id = $team->championship_id;
 
-        return redirect('/app/teams');
+        return redirect()->route('teams', ['id' => $championship_id]);
+        //return redirect('/app/teams');
     }
 }
