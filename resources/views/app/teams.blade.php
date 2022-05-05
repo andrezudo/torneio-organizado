@@ -89,6 +89,7 @@ $rankings = '';
                                   <div class="mb-3">
                                     <label for="title" class="form-label">Time:</label>
                                     <input type="text" class="form-control" id="name" name="name" placeholder="Nome do time">
+                                    <input type="text" class="form-control" id="championship_id" name="championship_id" value="{{session('championship')->id}}" style="display: none;">
                                   </div>
                                   <div class="modal-footer">
                                       <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
