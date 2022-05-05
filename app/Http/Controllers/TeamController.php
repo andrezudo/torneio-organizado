@@ -14,10 +14,11 @@ class TeamController extends Controller
         return view('app.teams',['teams' => $teams]);
     }
 
-    public function teams($id) {
+    public function teams(Request $request) {
 
         //$user = auth()->user();
-        $championship = Championship::findOrFail($id);
+        //$championship = Championship::findOrFail($id);
+        $championship = $request->session()->get('championship');
         $teams = $championship->teams;    
 
         return view('app.teams', ['teams' => $teams]);

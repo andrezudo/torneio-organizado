@@ -68,7 +68,7 @@
                       </a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link <?php echo $times ?>" href="/app/teams/{{session('championship')->id}}">
+                      <a class="nav-link <?php echo $times ?>" href="/app/teams">
                         <i class="fas fa-users"></i>
                         Times
                       </a>
