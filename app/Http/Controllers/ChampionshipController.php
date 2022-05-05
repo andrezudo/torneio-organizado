@@ -30,9 +30,10 @@ class ChampionshipController extends Controller
 
     public function campeonato($id) {
         $user = auth()->user();
-        $teams = $user->teams;
+        //$teams = $user->teams;
 
         $championship = Championship::findOrFail($id);
+        $teams = $championship->teams;
 
         return view('site.campeonato', ['championship' => $championship, 'teams' => $teams]);
     }

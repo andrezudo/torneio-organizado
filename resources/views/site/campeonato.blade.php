@@ -12,7 +12,7 @@
                 <div class="text-white">
                     <h2>{{ $championship->title }}</h2>
                     <p><i class="fa-solid fa-location-dot"></i> {{ $championship->localization }} | <i class="fa-solid fa-calendar-day"></i> 30/02/2021</p>
-                    <p><i class="fa-solid fa-dollar-sign"></i> Premiação: </p>
+                    <p><i class="fa-solid fa-dollar-sign"></i> Premiação: R${{ $championship->award }},00</p>
                 </div>
 
                 <div class="container">
