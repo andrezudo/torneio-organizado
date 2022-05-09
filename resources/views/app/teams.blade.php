@@ -16,9 +16,14 @@ $rankings = '';
                       <div class="row mt-5 mb-4 text-white">
                         <div class="d-flex justify-content-between mb-5">
                           <h2>{{session('championship')->title}}</h2>
-                          <button type="button" class="btn btn-register" data-bs-toggle="modal" data-bs-target="#teamModal">
-                            <i class="fa-solid fa-plus"></i> Adicionar time
-                          </button>
+                          <div>
+                            <a type="button" href="#" class="btn btn-register">
+                              <i class="fa-solid fa-table"></i> Gerar jogos
+                            </a>
+                            <button type="button" class="btn btn-register" data-bs-toggle="modal" data-bs-target="#teamModal">
+                              <i class="fa-solid fa-plus"></i> Adicionar time
+                            </button>
+                          </div>
                         </div>
                       </div>
                   </div>
