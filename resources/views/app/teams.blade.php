@@ -17,7 +17,7 @@ $rankings = '';
                         <div class="d-flex justify-content-between mb-5">
                           <h2>{{session('championship')->title}}</h2>
                           <div>
-                            <a type="button" href="#" class="btn btn-register">
+                            <a type="button" href="/app/gerar-jogos" class="btn btn-register">
                               <i class="fa-solid fa-table"></i> Gerar jogos
                             </a>
                             <button type="button" class="btn btn-register" data-bs-toggle="modal" data-bs-target="#teamModal">

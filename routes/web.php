@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ChampionshipController;
 use App\Http\Controllers\TeamController;
 use App\Http\Controllers\PlayerController;
+use App\Http\Controllers\GameController;
 
 Route::get('/home', function(){
     return view('welcome');
@@ -56,6 +57,7 @@ Route::prefix('/app')->group(function(){
     Route::delete('/delete-player/{id}', [PlayerController::class, 'destroy'])->middleware('auth');
     Route::post('/player', [PlayerController::class, 'store'])->middleware('auth');
 
+    Route::get('/gerar-jogos', [GameController::class, 'gerarJogos'])->middleware('auth');
 
     Route::get('/tabela', function(){
         return view('app.tabela');
