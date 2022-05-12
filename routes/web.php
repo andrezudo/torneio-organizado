@@ -58,6 +58,8 @@ Route::prefix('/app')->group(function(){
     Route::post('/player', [PlayerController::class, 'store'])->middleware('auth');
 
     Route::get('/gerar-jogos', [GameController::class, 'gerarJogos'])->middleware('auth');
+    Route::get('/games/{id}', [GameController::class, 'games'])->middleware('auth')->name('games');
+    Route::post('/game', [GameController::class, 'store'])->middleware('auth');
 
     Route::get('/tabela', function(){
         return view('app.tabela');
