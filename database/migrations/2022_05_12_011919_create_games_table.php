@@ -20,6 +20,8 @@ class CreateGamesTable extends Migration
             $table->integer('round');
             $table->foreignId('team1_id')->constrained('teams')->onDelete('cascade');
             $table->foreignId('team2_id')->constrained('teams')->onDelete('cascade');
+            $table->integer('team1_goals');
+            $table->integer('team2_goals');
         });
     }
 
