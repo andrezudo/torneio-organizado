@@ -74,15 +74,15 @@
                       </a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link <?php echo $classificacao ?>" href="/app/tabela">
-                        <i class="fas fa-trophy"></i>
-                        Classificação
-                      </a>
-                    </li>
-                    <li class="nav-item">
                       <a class="nav-link <?php echo $jogos ?>" href="/app/jogos">
                         <i class="fas fa-table"></i>
                         Jogos
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link <?php echo $classificacao ?>" href="/app/tabela">
+                        <i class="fas fa-trophy"></i>
+                        Classificação
                       </a>
                     </li>
                     <li class="nav-item">
