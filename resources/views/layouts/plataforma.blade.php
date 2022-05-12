@@ -74,7 +74,7 @@
                       </a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link <?php echo $jogos ?>" href="/app/jogos">
+                      <a class="nav-link <?php echo $jogos ?>" href="/app/games/{{session('championship')->id}}">
                         <i class="fas fa-table"></i>
                         Jogos
                       </a>
