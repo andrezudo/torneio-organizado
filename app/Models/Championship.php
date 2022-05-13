@@ -22,4 +22,9 @@ class Championship extends Model
     public function games() {
         return $this->hasMany('App\Models\Game');
     }
+
+    public function tables() {
+        return $this->hasMany('App\Models\Table');
+    }
+
 }
