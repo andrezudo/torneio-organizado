@@ -35,6 +35,36 @@ class GameController extends Controller
         $game->round = 1;
         $game->save();
 
+        /*$model = User::where('votes', '>', 100)->firstOrFail();
+        $table1 = Table::findOrFail($request->team1_id);
+        $table2 = Table::findOrFail($request->team2_id);*/
+        $table1 = Table::where('team_id', '=', $request->team1_id)->firstOrFail();
+        $table2 = Table::where('team_id', '=', $request->team2_id)->firstOrFail();
+
+        $table1->sg = $table1->sg + ($request->team1_goals - $request->team2_goals);
+        $table2->sg = $table2->sg + ($request->team2_goals - $request->team1_goals);
+
+        if( $request->team1_goals > $request->team2_goals){
+            $table1->points = $table1->points + 3;
+            $table1->victory = $table1->victory + 1;
+            $table2->defeat = $table2->defeat + 1;
+        }elseif($request->team1_goals < $request->team2_goals){
+            $table2->points = $table2->points + 3;
+            $table2->victory = $table2->victory + 1;
+            $table1->defeat = $table1->defeat + 1;
+        }elseif ($request->team1_goals == $request->team2_goals) {
+            $table1->points = $table1->points + 1;
+            $table2->points = $table2->points + 1;
+            $table2->draw = $table2->draw + 1;
+            $table1->draw = $table1->draw + 1;
+        }
+
+        $table1->save();
+        $table2->save();
+
+        return redirect()->route('games', ['id' => $request->championship_id]);
+
+        /*
         $table1 = new Table;
         $table1->championship_id = $request->championship_id;
         $table1->team_id = $request->team1_id;
@@ -72,9 +102,8 @@ class GameController extends Controller
             $table2->draw = 1;
         }
         $table2->save();
+        */
 
-
-        return redirect()->route('games', ['id' => $request->championship_id]);
         //return redirect('/app/teams');
     }
     
