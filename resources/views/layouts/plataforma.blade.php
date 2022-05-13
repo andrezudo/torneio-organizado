@@ -80,7 +80,7 @@
                       </a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link <?php echo $classificacao ?>" href="/app/tabela">
+                      <a class="nav-link <?php echo $classificacao ?>" href="/app/tabela/{{session('championship')->id}}">
                         <i class="fas fa-trophy"></i>
                         Classificação
                       </a>
