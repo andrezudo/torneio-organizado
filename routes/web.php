@@ -18,6 +18,7 @@ use App\Http\Controllers\TeamController;
 use App\Http\Controllers\PlayerController;
 use App\Http\Controllers\GameController;
 use App\Http\Controllers\TableController;
+use App\Http\Controllers\ResultController;
 
 Route::get('/home', function(){
     return view('welcome');
@@ -61,6 +62,8 @@ Route::prefix('/app')->group(function(){
     Route::get('/gerar-jogos', [GameController::class, 'gerarJogos'])->middleware('auth');
     Route::get('/games/{id}', [GameController::class, 'games'])->middleware('auth')->name('games');
     Route::post('/game', [GameController::class, 'store'])->middleware('auth');
+
+    Route::post('/result', [ResultController::class, 'store'])->middleware('auth');
 
     Route::get('/tabela/{id}', [TableController::class, 'tabela'])->middleware('auth')->name('tabela');
 
