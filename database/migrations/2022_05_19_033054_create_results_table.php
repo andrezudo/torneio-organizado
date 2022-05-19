@@ -16,6 +16,14 @@ class CreateResultsTable extends Migration
         Schema::create('results', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->foreignId('championship_id')->constrained()->onDelete('cascade');
+            $table->foreignId('game_id')->constrained('games')->onDelete('cascade');
+            $table->integer('team1_goals');
+            $table->integer('team2_goals');
+            $table->integer('team1_yellowcard');
+            $table->integer('team2_yellowcard');
+            $table->integer('team1_redcard');
+            $table->integer('team2_redcard');
         });
     }
 
