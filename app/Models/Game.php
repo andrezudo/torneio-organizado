@@ -18,4 +18,8 @@ class Game extends Model
         return $this->hasOne(Team::class, 'team2_id');
     }
 
+    public function result() {
+        return $this->hasMany('App\Models\Result');
+    }
+
 }
