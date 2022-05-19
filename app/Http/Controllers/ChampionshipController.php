@@ -64,6 +64,7 @@ class ChampionshipController extends Controller
             $championship->running_stitches = '1';
         }
         $championship->return = $request->return;
+        $championship->initiated = '0';
 
         $user = auth()->user();
         $championship->user_id = $user->id;

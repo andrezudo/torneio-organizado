@@ -17,9 +17,15 @@ $rankings = '';
                         <div class="d-flex justify-content-between mb-5">
                           <h2>{{session('championship')->title}}</h2>
                           <div>
-                            <button type="button" class="btn btn-register" data-bs-toggle="modal" data-bs-target="#teamModal">
-                              <i class="fa-solid fa-plus"></i> Adicionar time
+                            @if ( session('championship')->initiated == '0' )
+                              <button type="button" class="btn btn-register" data-bs-toggle="modal" data-bs-target="#teamModal">
+                                <i class="fa-solid fa-plus"></i> Adicionar time
+                              </button>
+                            @else
+                            <button type="button" class="btn btn-register" disabled>
+                              <i class="fa-solid fa-futbol"></i> Campeonato Iniciado
                             </button>
+                            @endif
                           </div>
                         </div>
                       </div>
@@ -37,11 +43,13 @@ $rankings = '';
                                   <button type="button" class="btn btn-warning mx-2 my-2 btn-sm" data-bs-toggle="modal" data-bs-target="#modalEditTime{{$team->id}}">
                                     <i class="fa-solid fa-pen"></i>
                                   </button>
-                                  <form style="display: inline-block" action="/app/team/{{$team->id}}" method="POST">
-                                      @csrf
-                                      @method('DELETE')
-                                      <button type="submit" class="btn btn-danger mx-2 my-2 btn-sm"><i class="fa-solid fa-trash"></i></button>
-                                  </form>
+                                  @if ( session('championship')->initiated == '0' )
+                                    <form style="display: inline-block" action="/app/team/{{$team->id}}" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-danger mx-2 my-2 btn-sm"><i class="fa-solid fa-trash"></i></button>
+                                    </form>
+                                  @endif
                                 </div>
                               </div>
                           </div>

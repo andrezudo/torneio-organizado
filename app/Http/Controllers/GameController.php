@@ -26,6 +26,11 @@ class GameController extends Controller
     }
 
     public function store(Request $request) {
+        $championship = Championship::where('id', '=', $request->championship_id)->firstOrFail();
+        $championship->initiated = '1';
+        $championship->save();
+        $request->session()->put('championship', $championship);
+
         $game = new Game;
         $game->championship_id = $request->championship_id;
         $game->team1_id = $request->team1_id;
