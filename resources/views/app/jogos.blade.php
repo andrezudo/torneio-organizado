@@ -47,8 +47,70 @@ $rankings = '';
                           <div>
                             <p><i class="fa-solid fa-shield-halved"></i> {{$game->team2_id}}</p>
                         </div>
+                        <button type="button" class="btn btn-warning mx-2 my-2 btn-sm" data-bs-toggle="modal" data-bs-target="#resultModal{{$game->id}}">
+                            <i class="fa-solid fa-pen"></i>
+                        </button>
                       </div>
                       <hr>
+
+                      <!-- Modal adicionar Resultado-->
+                      <div class="modal fade" id="resultModal{{$game->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-lg">
+                        <div class="modal-content text-black">
+                            <div class="modal-header">
+                            <h5 class="modal-title text-black" id="exampleModalLabel">Adicionar Resultado</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <form action="/app/result" method="POST">
+                                    @csrf
+                                    <div class="mb-3">
+                                        <input type="text" class="form-control" id="championship_id" name="championship_id" value="{{session('championship')->id}}" style="display: none;">
+                                        <input type="text" class="form-control" id="game_id" name="game_id" value="{{$game->id}}" style="display: none;">
+                                        <input type="text" class="form-control" id="team1_id" name="team1_id" value="{{$game->team1_id}}" style="display: none;">
+                                        <input type="text" class="form-control" id="team2_id" name="team2_id" value="{{$game->team2_id}}" style="display: none;">
+                                    </div>
+                                    <div class="mb-3">
+                                        <div class="row">
+                                            <div class="col-sm-12">
+                                                <label class="form-label">{{$game->team1_id}}</label>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <input type="number" class="form-control" id="team1_goals" name="team1_goals" placeholder="Gols">
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <input type="number" class="form-control" id="team1_yellowcard" name="team1_yellowcard" placeholder="Cartões amarelos">
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <input type="number" class="form-control" id="team1_redcard" name="team1_redcard" placeholder="Cartões vermelhos">
+                                            </div>
+                                        </div>  
+                                    </div>
+                                    <div class="mb-3">
+                                        <div class="row">
+                                            <div class="col-sm-12">
+                                                <label class="form-label">{{$game->team2_id}}</label>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <input type="number" class="form-control" id="team2_goals" name="team2_goals" placeholder="Gols">
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <input type="number" class="form-control" id="team2_yellowcard" name="team2_yellowcard" placeholder="Cartões amarelos">
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <input type="number" class="form-control" id="team2_redcard" name="team2_redcard" placeholder="Cartões vermelhos">
+                                            </div>
+                                        </div>  
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                                        <button type="submit" class="btn btn-primary">Salvar</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        </div>
+                      </div>
                       
                       @endforeach
 
@@ -73,7 +135,7 @@ $rankings = '';
 
                   <!-- Modal adicionar jogo-->
                   <div class="modal fade" id="gameModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-lg">
+                    <div class="modal-dialog">
                       <div class="modal-content">
                           <div class="modal-header">
                           <h5 class="modal-title" id="exampleModalLabel">Adicionar jogo</h5>
@@ -87,7 +149,7 @@ $rankings = '';
                                   </div>
                                   <div class="mb-3">
                                     <div class="row">
-                                        <div class="col-sm-7">
+                                        <div class="col-sm-12">
                                             <select id="team1_id" name="team1_id" class="form-select" aria-label="Default select example">
                                                 <option selected>Selecione o primeiro time</option>
                                                 @foreach ($teams as $team)
@@ -95,14 +157,14 @@ $rankings = '';
                                                 @endforeach
                                             </select>
                                         </div>
-                                        <div class="col-sm-5">
+                                        <div class="col-sm-5" style="display: none;">
                                             <input type="number" class="form-control" id="team1_goals" name="team1_goals" placeholder="Gols">
                                         </div>
                                     </div>  
                                   </div>
                                   <div class="mb-3">
                                     <div class="row">
-                                        <div class="col-sm-7">
+                                        <div class="col-sm-12">
                                             <select id="team2_id" name="team2_id" class="form-select" aria-label="Default select example">
                                                 <option selected>Selecione o primeiro time</option>
                                                 @foreach ($teams as $team)
@@ -110,7 +172,7 @@ $rankings = '';
                                                 @endforeach
                                             </select>
                                         </div>
-                                        <div class="col-sm-5">
+                                        <div class="col-sm-5" style="display: none;">
                                             <input type="number" class="form-control" id="team2_goals" name="team2_goals" placeholder="Gols">
                                         </div>
                                     </div>  
