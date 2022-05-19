@@ -35,8 +35,10 @@ class GameController extends Controller
         $game->championship_id = $request->championship_id;
         $game->team1_id = $request->team1_id;
         $game->team2_id = $request->team2_id;
-        $game->team1_goals = $request->team1_goals;
-        $game->team2_goals = $request->team2_goals;
+        //$game->team1_goals = $request->team1_goals;
+        $game->team1_goals = 0;
+        //$game->team2_goals = $request->team2_goals;
+        $game->team2_goals = 0;
         $game->round = 1;
         $game->save();
 
@@ -64,8 +66,8 @@ class GameController extends Controller
             $table1->draw = $table1->draw + 1;
         }
 
-        $table1->save();
-        $table2->save();
+        //$table1->save();
+        //$table2->save();
 
         return redirect()->route('games', ['id' => $request->championship_id]);
 
