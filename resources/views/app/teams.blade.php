@@ -22,9 +22,9 @@ $rankings = '';
                                 <i class="fa-solid fa-plus"></i> Adicionar time
                               </button>
                             @else
-                            <button type="button" class="btn btn-register" disabled>
-                              <i class="fa-solid fa-futbol"></i> Campeonato Iniciado
-                            </button>
+                              <button type="button" class="btn btn-register" disabled>
+                                <i class="fa-solid fa-futbol"></i> Campeonato Iniciado
+                              </button>
                             @endif
                           </div>
                         </div>
