@@ -86,4 +86,13 @@ class ChampionshipController extends Controller
         return redirect('/app/campeonatos');
     }
 
+    public function iniciar($id){
+        $championship = Championship::where('id', '=', $id)->firstOrFail();
+        $championship->initiated = '1';
+        $championship->save();
+        session()->put('championship', $championship);
+
+        return redirect()->route('games', ['id' => $id]);
+    }
+
 }
