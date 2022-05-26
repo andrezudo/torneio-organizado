@@ -12,14 +12,14 @@ class Game extends Model
     protected $guarded = [];
 
     public function team1() {
-        return $this->hasOne('App\Models\Team');
+        return $this->belongsTo('App\Models\Team');
     }
     public function team2() {
-        return $this->hasOne(Team::class, 'team2_id');
+        return $this->belongsTo('App\Models\Team');
     }
 
     public function result() {
-        return $this->hasMany('App\Models\Result');
+        return $this->belongsTo('App\Models\Result');
     }
 
 }
