@@ -11,4 +11,8 @@ class Table extends Model
 
     protected $guarded = [];
 
+    public function team() {
+        return $this->belongsTo('App\Models\Team');
+    }
+
 }
