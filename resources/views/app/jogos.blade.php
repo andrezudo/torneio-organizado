@@ -37,7 +37,7 @@ $rankings = '';
 
                       <div class="text-center d-flex justify-content-evenly">
                           <div>
-                              <p>{{$game->team1_id}} <i class="fa-solid fa-shield-halved"></i></p>
+                              <p>{{$game->team1->name}} <i class="fa-solid fa-shield-halved"></i></p>
                           </div>
                           <div>
                               <span><b>{{$game->team1_goals}}</b> </span>
@@ -45,7 +45,7 @@ $rankings = '';
                               <span> <b>{{$game->team2_goals}}</b></span>
                           </div>
                           <div>
-                            <p><i class="fa-solid fa-shield-halved"></i> {{$game->team2_id}}</p>
+                            <p><i class="fa-solid fa-shield-halved"></i> {{$game->team2->name}}</p>
                         </div>
                         <button type="button" class="btn btn-warning mx-2 my-2 btn-sm" data-bs-toggle="modal" data-bs-target="#resultModal{{$game->id}}">
                             <i class="fa-solid fa-pen"></i>
@@ -73,7 +73,7 @@ $rankings = '';
                                     <div class="mb-3">
                                         <div class="row">
                                             <div class="col-sm-12">
-                                                <label class="form-label">{{$game->team1_id}}</label>
+                                                <label class="form-label">{{$game->team1->name}}</label>
                                             </div>
                                             <div class="col-sm-4">
                                                 <input type="number" class="form-control" id="team1_goals" name="team1_goals" placeholder="Gols">
@@ -89,7 +89,7 @@ $rankings = '';
                                     <div class="mb-3">
                                         <div class="row">
                                             <div class="col-sm-12">
-                                                <label class="form-label">{{$game->team2_id}}</label>
+                                                <label class="form-label">{{$game->team2->name}}</label>
                                             </div>
                                             <div class="col-sm-4">
                                                 <input type="number" class="form-control" id="team2_goals" name="team2_goals" placeholder="Gols">
