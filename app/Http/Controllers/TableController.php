@@ -13,7 +13,15 @@ class TableController extends Controller
         //$championship = Championship::findOrFail($id);
         //$tables = $championship->tables;
         
-        $tables = Table::where('Championship_id', '=', $id)
+        /*$tables = Table::where('Championship_id', '=', $id)
+                    ->orderBy('points', 'desc')
+                    ->orderBy('victory', 'desc')
+                    ->orderBy('sg', 'desc')
+                    ->orderBy('id', 'asc')
+                    ->get();*/
+        
+        $tables = Table::with('team')
+                    ->where('Championship_id', '=', $id)
                     ->orderBy('points', 'desc')
                     ->orderBy('victory', 'desc')
                     ->orderBy('sg', 'desc')
