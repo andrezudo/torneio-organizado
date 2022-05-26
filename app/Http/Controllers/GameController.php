@@ -7,6 +7,7 @@ use App\Models\Game;
 use App\Models\Team;
 use App\Models\Championship;
 use App\Models\Table;
+use App\Models\Result;
 
 class GameController extends Controller
 {
@@ -20,7 +21,8 @@ class GameController extends Controller
         $championship = Championship::findOrFail($id);
         //$championship = $request->session()->get('championship');
         $teams = $championship->teams;
-        $games = $championship->games;
+        //$games = $championship->games;
+        $games = Game::with('team1','team2','result')->where('championship_id', '=', $id)->get();
 
         return view('app.jogos', ['teams' => $teams, 'games' => $games]);
     }
