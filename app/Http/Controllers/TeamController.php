@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Team;
 use App\Models\Championship;
 use App\Models\Table;
+use App\Models\Game;
 
 class TeamController extends Controller
 {
@@ -42,6 +43,21 @@ class TeamController extends Controller
         $table->draw = 0;
         $table->sg = 0;
         $table->save();
+
+        //selecionar todos os times com id diferente do criado
+        $teams = Team::where('id', '!=', $team->id)->where('championship_id', '=', $request->championship_id)->get();
+
+        foreach ($teams as $teamm) {
+            $game = new Game;
+            $game->championship_id = $request->championship_id;
+            $game->team1_id = $team->id;
+            $game->team2_id = $teamm->id;
+            $game->team1_goals = 0;
+            $game->team2_goals = 0;
+            $game->round = 1;
+            $game->save();
+        }
+
 
         return redirect()->route('teams', ['id' => $request->championship_id]);
         //return redirect('/app/teams');
