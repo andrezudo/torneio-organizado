@@ -41,7 +41,7 @@ $rankings = '';
                                   @foreach ( $tables as $table )
                                     <tr>
                                       <th scope="row">{{$loop->iteration}}º</th>
-                                      <td>{{ $table->team_id }}</td>
+                                      <td>{{ $table->team->name }}</td>
                                       <td><b>{{ $table->points }}</b></td>
                                       <td>{{ $table->victory }}</td>
                                       <td>{{ $table->draw }}</td>
