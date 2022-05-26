@@ -36,14 +36,11 @@ Route::get('/', function(){
 
 Route::prefix('/app')->group(function(){
     Route::delete('/championship/{id}', [ChampionshipController::class, 'destroy']);
-
     Route::put('/update/{id}', [ChampionshipController::class, 'update'])->middleware('auth');
-
     Route::post('/championship', [ChampionshipController::class, 'store']);
-
     Route::get('/campeonatos', [ChampionshipController::class, 'campeonatos'])->middleware('auth');
-
     Route::get('/painel/{id}', [ChampionshipController::class, 'painel'])->middleware('auth');
+    Route::get('/iniciar-campeonato/{id}', [ChampionshipController::class, 'iniciar'])->middleware('auth');
     
     //Route::get('/teams', [TeamController::class, 'index'])->middleware('auth');
     Route::get('/teams/{id}', [TeamController::class, 'teams'])->middleware('auth')->name('teams');
