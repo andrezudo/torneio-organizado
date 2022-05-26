@@ -56,6 +56,18 @@ class TeamController extends Controller
             $game->team2_goals = 0;
             $game->round = 1;
             $game->save();
+
+            $championship = Championship::where('id', '=', $request->championship_id)->firstOrFail();
+            if( $championship->return == 1){
+                $game2 = new Game;
+                $game2->championship_id = $request->championship_id;
+                $game2->team1_id = $teamm->id;
+                $game2->team2_id = $team->id;
+                $game2->team1_goals = 0;
+                $game2->team2_goals = 0;
+                $game2->round = 1;
+                $game2->save();
+            }
         }
 
 
