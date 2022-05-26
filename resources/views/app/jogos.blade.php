@@ -17,14 +17,25 @@ $rankings = '';
                         <div class="d-flex justify-content-between mb-5">
                             <h2>Jogos do campeonato</h2>
                             <div>
+                                @if ( session('championship')->initiated == '0' )
+                                    <a type="button" href="/app/iniciar-campeonato/{{session('championship')->id}}" class="btn btn-register">
+                                        <i class="fa-solid fa-circle-play"></i> Inicar campeonato
+                                    </a>
+                                @else
+                                    <button type="button" class="btn btn-register" disabled>
+                                        <i class="fa-solid fa-futbol"></i> Campeonato Iniciado
+                                    </button>
+                                @endif
                                 <!--
                                 <a type="button" href="/app/gerar-jogos" class="btn btn-register">
                                     <i class="fa-solid fa-plus"></i> Adicionar jogo
                                 </a>
                                 -->
+                                <!--
                                 <button type="button" class="btn btn-register" data-bs-toggle="modal" data-bs-target="#gameModal">
                                     <i class="fa-solid fa-plus"></i> Adicionar jogo
                                 </button>
+                                -->
                             </div>
                         </div>
                     </div>
@@ -47,9 +58,11 @@ $rankings = '';
                           <div>
                             <p><i class="fa-solid fa-shield-halved"></i> {{$game->team2->name}}</p>
                         </div>
-                        <button type="button" class="btn btn-warning mx-2 my-2 btn-sm" data-bs-toggle="modal" data-bs-target="#resultModal{{$game->id}}">
-                            <i class="fa-solid fa-pen"></i>
-                        </button>
+                        @if ( session('championship')->initiated == '1' )
+                            <button type="button" class="btn btn-warning mx-2 my-2 btn-sm" data-bs-toggle="modal" data-bs-target="#resultModal{{$game->id}}">
+                                <i class="fa-solid fa-pen"></i>
+                            </button>
+                        @endif
                       </div>
                       <hr>
 
