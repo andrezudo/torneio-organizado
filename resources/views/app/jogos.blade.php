@@ -41,7 +41,7 @@ $rankings = '';
                     </div>
                 </div>  
                 
-                <div class="container mt-5 text-white">  
+                <div class="container mt-5 mb-5 text-white">  
 
                       <hr>
                       @foreach ($games as $game)
@@ -51,20 +51,100 @@ $rankings = '';
                               <p>{{$game->team1->name}} <i class="fa-solid fa-shield-halved"></i></p>
                           </div>
                           <div>
-                              <span><b>{{$game->team1_goals}}</b> </span>
+                              @if ( $game->result == null)
+                                <span><b></b> </span> 
+                              @else
+                                <span><b>{{$game->result->team1_goals}}</b> </span>  
+                              @endif
                               <span> X </span>
-                              <span> <b>{{$game->team2_goals}}</b></span>
+                              @if ( $game->result == null)
+                                <span><b></b> </span> 
+                              @else
+                                <span><b>{{$game->result->team2_goals}}</b> </span>
+                              @endif
                           </div>
                           <div>
                             <p><i class="fa-solid fa-shield-halved"></i> {{$game->team2->name}}</p>
                         </div>
                         @if ( session('championship')->initiated == '1' )
-                            <button type="button" class="btn btn-warning mx-2 my-2 btn-sm" data-bs-toggle="modal" data-bs-target="#resultModal{{$game->id}}">
-                                <i class="fa-solid fa-pen"></i>
-                            </button>
+                            @if ( $game->result == null)
+                                <button style="background: #8BC34A;border-color: #8BC34A;" type="button" class="btn btn-warning mx-2 my-2 btn-sm" data-bs-toggle="modal" data-bs-target="#resultModal{{$game->id}}">
+                                    <i class="fas fa-futbol"></i>
+                                </button>
+                            @else
+                                <button type="button" class="btn btn-warning mx-2 my-2 btn-sm" data-bs-toggle="modal" data-bs-target="#resultEditModal{{$game->id}}">
+                                    <i class="fas fa-pen"></i>
+                                </button>
+                            @endif
                         @endif
                       </div>
                       <hr>
+
+                      @if ($game->result != null)
+                      <!-- Modal Editar Resultado-->
+                      <div class="modal fade" id="resultEditModal{{$game->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-lg">
+                        <div class="modal-content text-black">
+                            <div class="modal-header">
+                            <h5 class="modal-title text-black" id="exampleModalLabel">Editar Resultado</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <form action="/app/update-result/{{$game->result->id}}" method="POST">
+                                    @csrf
+                                    @method('PUT')
+                                    <div class="mb-3">
+                                        <input type="text" class="form-control" id="championship_id" name="championship_id" value="{{session('championship')->id}}" style="display: none;">
+                                        <input type="text" class="form-control" id="game_id" name="game_id" value="{{$game->id}}" style="display: none;">
+                                    </div>
+                                    <div class="mb-3">
+                                        <div class="row">
+                                            <div class="col-sm-12">
+                                                <label class="form-label">{{$game->team1->name}}</label>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <label class="form-label" for="team1_goals">Gols:</label>
+                                                <input type="number" class="form-control" id="team1_goals" name="team1_goals" value="{{$game->result->team1_goals}}">
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <label class="form-label" for="team1_yellowcard">Cartões amarelos:</label>
+                                                <input type="number" class="form-control" id="team1_yellowcard" name="team1_yellowcard" value="{{$game->result->team1_yellowcard}}">
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <label class="form-label" for="team1_redcard">Cartões amarelos:</label>
+                                                <input type="number" class="form-control" id="team1_redcard" name="team1_redcard" value="{{$game->result->team1_redcard}}">
+                                            </div>
+                                        </div>  
+                                    </div>
+                                    <div class="mb-3">
+                                        <div class="row">
+                                            <div class="col-sm-12">
+                                                <label class="form-label">{{$game->team2->name}}</label>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <label class="form-label" for="team2_goals">Gols:</label>
+                                                <input type="number" class="form-control" id="team2_goals" name="team2_goals" value="{{$game->result->team2_goals}}">
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <label class="form-label" for="team2_yellowcard">Cartões amarelos:</label>
+                                                <input type="number" class="form-control" id="team2_yellowcard" name="team2_yellowcard" value="{{$game->result->team2_yellowcard}}">
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <label class="form-label" for="team2_redcard">Cartões vermelhos:</label>
+                                                <input type="number" class="form-control" id="team2_redcard" name="team2_redcard" value="{{$game->result->team2_redcard}}">
+                                            </div>
+                                        </div>  
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                                        <button type="submit" class="btn btn-primary">Salvar</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        </div>
+                      </div>
+                      @endif
 
                       <!-- Modal adicionar Resultado-->
                       <div class="modal fade" id="resultModal{{$game->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

@@ -19,7 +19,7 @@ class Game extends Model
     }
 
     public function result() {
-        return $this->belongsTo('App\Models\Result');
+        return $this->hasOne('App\Models\Result');
     }
 
 }

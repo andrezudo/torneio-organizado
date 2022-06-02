@@ -61,6 +61,7 @@ Route::prefix('/app')->group(function(){
     Route::post('/game', [GameController::class, 'store'])->middleware('auth');
 
     Route::post('/result', [ResultController::class, 'store'])->middleware('auth');
+    Route::put('/update-result/{id}', [ResultController::class, 'update'])->middleware('auth');
 
     Route::get('/tabela/{id}', [TableController::class, 'tabela'])->middleware('auth')->name('tabela');
 
