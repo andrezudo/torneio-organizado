@@ -46,37 +46,47 @@ $rankings = '';
                       <hr>
                       @foreach ($games as $game)
 
-                      <div class="text-center d-flex justify-content-evenly">
-                          <div>
+                      <div class="text-center d-flex justify-content-around">
+                        <div class="d-flex justify-content-evenly w-75">
+                          <div class="text-center w-25">
                               <p>{{$game->team1->name}} <i class="fa-solid fa-shield-halved"></i></p>
                           </div>
-                          <div>
-                              @if ( $game->result == null)
-                                <span><b></b> </span> 
-                              @else
-                                <span><b>{{$game->result->team1_goals}}</b> </span>  
-                              @endif
-                              <span> X </span>
-                              @if ( $game->result == null)
-                                <span><b></b> </span> 
-                              @else
-                                <span><b>{{$game->result->team2_goals}}</b> </span>
-                              @endif
+                          <div class="d-flex justify-content-evenly">
+                              <div class="mx-2">
+                                @if ( $game->result == null)
+                                    <p><span><b></b> </span></p> 
+                                @else
+                                    <p><span><b>{{$game->result->team1_goals}}</b> </span></p>
+                                @endif
+                              </div>
+                              <div class="mx-2">
+                                <p><span> X </span></p>
+                              </div>
+                              <div class="mx-2">
+                                @if ( $game->result == null)
+                                    <P> <span><b></b></span></P>
+                                @else
+                                    <P><span><b> {{$game->result->team2_goals}}</b></span></P>
+                                @endif
+                              </div>
                           </div>
-                          <div>
+                          <div class="text-center w-25">
                             <p><i class="fa-solid fa-shield-halved"></i> {{$game->team2->name}}</p>
+                          </div>
                         </div>
-                        @if ( session('championship')->initiated == '1' )
-                            @if ( $game->result == null)
-                                <button style="background: #8BC34A;border-color: #8BC34A;" type="button" class="btn btn-warning mx-2 my-2 btn-sm" data-bs-toggle="modal" data-bs-target="#resultModal{{$game->id}}">
-                                    <i class="fas fa-futbol"></i>
-                                </button>
-                            @else
-                                <button type="button" class="btn btn-warning mx-2 my-2 btn-sm" data-bs-toggle="modal" data-bs-target="#resultEditModal{{$game->id}}">
-                                    <i class="fas fa-pen"></i>
-                                </button>
+                        <div>
+                            @if ( session('championship')->initiated == '1' )
+                                @if ( $game->result == null)
+                                    <button style="background: #8BC34A;border-color: #8BC34A;" type="button" class="btn btn-warning mx-2 my-2 btn-sm" data-bs-toggle="modal" data-bs-target="#resultModal{{$game->id}}">
+                                        <i class="fas fa-futbol"></i>
+                                    </button>
+                                @else
+                                    <button type="button" class="btn btn-warning mx-2 my-2 btn-sm" data-bs-toggle="modal" data-bs-target="#resultEditModal{{$game->id}}">
+                                        <i class="fas fa-pen"></i>
+                                    </button>
+                                @endif
                             @endif
-                        @endif
+                        </div>
                       </div>
                       <hr>
 
