@@ -71,6 +71,7 @@
                                                 <option value="society" {{$championship->modality == 'society' ? "selected='selected'" : ""}}>Society</option>
                                             </select>
                                         </div>
+                                        <!--
                                         <div class="mb-3 d-flex justify-content-center">
                                             <div class="form-check form-check-inline">
                                                 <input class="form-check-input" type="radio" name="mata_mata" id="mata_mata" value="1">
@@ -85,6 +86,7 @@
                                                 <label class="form-check-label" for="running_stitches">Pontos corridos</label>
                                             </div>
                                         </div>
+                                        -->
                                         <div class="mb-3">
                                             <label for="return" class="form-label">Ida e Volta:</label>
                                             <select class="form-select" id="return" name="return" aria-label="Default select example">
@@ -138,6 +140,7 @@
                                 <option value="society">Society</option>
                             </select>
                         </div>
+                        <!--
                         <div class="mb-3 d-flex justify-content-center">
                             <div class="form-check form-check-inline">
                                 <input class="form-check-input" type="radio" name="forma" id="mata_mata" value="1">
@@ -152,6 +155,7 @@
                                 <label class="form-check-label" for="running_stitches">Pontos corridos</label>
                             </div>
                         </div>
+                        -->
                         <div class="mb-3">
                             <label for="return" class="form-label">Ida e Volta:</label>
                             <select class="form-select" id="return" name="return" aria-label="Default select example">

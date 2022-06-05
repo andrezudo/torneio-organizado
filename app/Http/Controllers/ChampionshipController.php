@@ -50,6 +50,7 @@ class ChampionshipController extends Controller
             $championship->award = $request->award;
         }
         $championship->modality = $request->modality;
+        /*
         if ($forma == '1') {
             $championship->mata_mata = '1';
             $championship->groups = '0';
@@ -63,6 +64,11 @@ class ChampionshipController extends Controller
             $championship->mata_mata = '0';
             $championship->running_stitches = '1';
         }
+        */
+        $championship->groups = '0';
+        $championship->mata_mata = '0';
+        $championship->running_stitches = '1';
+        
         $championship->return = $request->return;
         $championship->initiated = '0';
 
