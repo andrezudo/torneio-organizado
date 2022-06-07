@@ -41,9 +41,16 @@ $rankings = '';
                     </div>
                 </div>  
                 
-                <div class="container mt-5 mb-5 text-white">  
+                <div class="container mt-5 mb-5 text-white">
 
-                      <hr>
+                    <hr>
+
+                    @if ( $games->count() == 0 )
+                        <div class="col-12 mb-5 mt-5 text-white text-center">
+                            <h3>Nenhuma partida por enquanto</h3>
+                        </div>
+                    @endif
+
                       @foreach ($games as $game)
 
                       <div class="text-center d-flex justify-content-around">

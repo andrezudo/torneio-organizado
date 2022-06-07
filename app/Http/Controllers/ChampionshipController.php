@@ -12,7 +12,7 @@ class ChampionshipController extends Controller
         //$championships = Championship::all();
 
         $user = auth()->user();
-        $championships = $user->championships;        
+        $championships = $user->championships;    
 
         return view('app.campeonatos', ['championships' => $championships]);
     }

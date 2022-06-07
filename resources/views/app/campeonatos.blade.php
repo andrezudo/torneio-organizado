@@ -17,6 +17,18 @@
                         </button>
                     </div>
 
+                    @empty( $championships )
+                        <div class="col-12 col-md-4 mb-5">
+                            <h3>Nenhum campeonato criado.</h3>
+                        </div>
+                    @endempty
+
+                    @if ( $championships->count() == 0 )
+                        <div class="col-12 mb-5 mt-5 text-white text-center">
+                            <h3>Nenhum campeonato criado</h3>
+                        </div>
+                    @endif
+
                     @foreach ($championships as $championship)
                     <div class="col-12 col-md-4 mb-5">
                         <div class="card text-white text-center card-infos">

@@ -32,6 +32,13 @@ $rankings = '';
                   </div>
 
                   <div class="container">
+
+                    @if ( $teams->count() == 0 )
+                        <div class="col-12 mb-5 mt-5 text-white text-center">
+                            <h3>Nenhum time adicionado</h3>
+                        </div>
+                    @endif
+
                       <div class="row">
                         @foreach ($teams as $team)
                           <div class="col-lg-3 col-md-4 col-sm-6">

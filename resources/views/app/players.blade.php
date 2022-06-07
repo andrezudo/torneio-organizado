@@ -28,6 +28,12 @@ $rankings = '';
                       <h3>Jogadores:</h3>
                       <hr>
 
+                      @if ( $players->count() == 0 )
+                          <div class="col-12 mb-5 mt-5 text-white text-center">
+                              <h3>Nenhum jogador</h3>
+                          </div>
+                      @endif
+
                       @foreach ($players as $player)
                         <div class="d-flex justify-content-between">
                           <a type="button" data-bs-toggle="modal" data-bs-target="#palyerModalEdit{{$player->id}}"><i class="fa-solid fa-user"></i> {{$player->name}}</a>
