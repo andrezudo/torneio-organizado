@@ -13,16 +13,12 @@ $rankings = '';
 @section('content')
                 
         <div class="container mt-5">
-              <nav class="barra-navegacao">
-                <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                  <button class="nav-link active tabua-nav" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">Fase de grupos</button>
-                  <button class="nav-link " id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Mata-mata</button>
-                </div>
-              </nav>
+          
+              <div class="text-white">
+                <h2>Classificação do campeonato</h2>
+              </div>
 
-              <div class="tab-content" id="nav-tabContent">
-
-                <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                <div class="mt-5 mb-5">
     
                         <div class="table-responsive mt-5">
                             <table class="table text-white">
@@ -54,6 +50,7 @@ $rankings = '';
                         </div>
                 </div>
 
+                <!--
                 <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
 
                   <div class="mt-5 mb-5">
@@ -108,8 +105,8 @@ $rankings = '';
                   </div>
 
                 </div>
+                -->
 
-              </div>
 
             </div>
 
