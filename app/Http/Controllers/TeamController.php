@@ -7,6 +7,7 @@ use App\Models\Team;
 use App\Models\Championship;
 use App\Models\Table;
 use App\Models\Game;
+use App\Models\Player;
 
 class TeamController extends Controller
 {
@@ -70,6 +71,15 @@ class TeamController extends Controller
             }
         }
 
+        //inserir jogadores enviados
+        for ($i = 0; $i < count($request->name_players); $i++) {
+            if ($request->name_players[$i] != '') {
+                $player = new Player;
+                $player->name = $request->name_players[$i];
+                $player->team_id = $team->id;
+                $player->save();
+            }
+        }
 
         return redirect()->route('teams', ['id' => $request->championship_id]);
         //return redirect('/app/teams');
