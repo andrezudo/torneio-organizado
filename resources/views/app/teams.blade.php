@@ -105,8 +105,18 @@ $rankings = '';
                                   @csrf
                                   <div class="mb-3">
                                     <label for="title" class="form-label">Time:</label>
-                                    <input type="text" class="form-control" id="name" name="name" placeholder="Nome do time">
+                                    <input type="text" class="form-control" id="name" name="name" required placeholder="Nome do time">
                                     <input type="text" class="form-control" id="championship_id" name="championship_id" value="{{session('championship')->id}}" style="display: none;">
+                                  </div>
+                                  <hr>
+                                  <div class="mb-3 container1">
+                                    <label for="title" class="form-label">Jogadores:</label>
+                                    <div class="row mb-2">
+                                      <div class="col-11">
+                                        <input type="text" class="form-control" id="name_player" name="name_players[]" placeholder="Nome do jogador">
+                                      </div>
+                                      <a class="btn btn-primary col-1 add_form_field"><i class="fa-solid fa-plus"></i></a>
+                                    </div>
                                   </div>
                                   <div class="modal-footer">
                                       <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
@@ -117,5 +127,37 @@ $rankings = '';
                       </div>
                     </div>
                   </div>
+
+
+<script>
+  $(document).ready(function() {
+      var max_fields = 10;
+      var wrapper = $(".container1");
+      var add_button = $(".add_form_field");
+
+      var x = 1;
+      $(add_button).click(function(e) {
+          e.preventDefault();
+          if (x < max_fields) {
+              x++;
+              $(wrapper).append(`<div class="row mb-2">
+                                      <div class="col-11">
+                                        <input type="text" class="form-control" id="name_player" name="name_players[]" placeholder="Nome do jogador">
+                                      </div>
+                                      <a class="delete btn btn-primary col-1"><i class="fa-solid fa-minus"></i></a>
+                                 </div>
+                                `); //add input box
+          } else {
+              alert('You Reached the limits')
+          }
+      });
+
+      $(wrapper).on("click", ".delete", function(e) {
+          e.preventDefault();
+          $(this).parent('div').remove();
+          x--;
+      })
+  });
+</script>
 
 @endsection
