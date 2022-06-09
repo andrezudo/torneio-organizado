@@ -13,7 +13,7 @@
                         <h2>Meus campeonatos</h2>
                         <!-- Button trigger modal -->
                         <button type="button" class="btn btn-register" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                            Adicionar Campeonato
+                            <i class="fa-solid fa-plus"></i> Adicionar Campeonato
                         </button>
                     </div>
 
@@ -37,15 +37,20 @@
                                 <p class="card-text"><i class="fas fa-map-marker-alt"></i> {{$championship->localization}}</p>
                                 <p class="card-text"><i class="fas fa-calendar-day"></i> 30/12/2021</p>
                                 <a class="btn btn-register" data-bs-toggle="modal" data-bs-target="#modalEditCamp{{$championship->id}}">
-                                    Editar
+                                    <i class="fa-solid fa-pen"></i> Editar
                                 </a>
+                                <a class="btn btn-register" data-bs-toggle="modal" data-bs-target="#modalDeleteCamp{{$championship->id}}">
+                                    <i class="fa-solid fa-trash"></i> Apagar
+                                </a>
+                                <!--
                                 <form style="display: inline-block" action="/app/championship/{{$championship->id}}" method="POST">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="btn btn-dahsboard"><ion-icon name="trash-outline"></ion-icon>Apagar</button>
                                 </form>
+                                -->
                                 <a href="/app/painel/{{ $championship->id }}" class="btn btn-register">
-                                    Acessar
+                                    <i class="fa-solid fa-futbol"></i> Acessar
                                 </a>
                             </div>
                         </div>
@@ -115,6 +120,30 @@
                             </div>
                         </div>
                     </div>
+
+                    <!-- Modal Excluir Campeonato -->
+                  <div class="modal fade" id="modalDeleteCamp{{$championship->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <div>
+                                    <h5>Tem certeza que deseja apagar "{{ $championship->title }}"?</h5>
+                                </div>
+                                <form action="/app/championship/{{$championship->id}}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Não</button>
+                                        <button type="submit" class="btn btn-primary"><ion-icon name="trash-outline"></ion-icon>Sim</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
                     @endforeach
                 </div>
