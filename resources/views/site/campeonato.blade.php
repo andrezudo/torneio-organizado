@@ -6,31 +6,67 @@
 
     <header>
 
-        <section class="mt-5">
+        <section class="mt-5 text-white">
             <div class="container">
                 
-                <div class="text-white">
+                <div class="">
                     <h2>{{ $championship->title }}</h2>
                     <p><i class="fa-solid fa-location-dot"></i> {{ $championship->localization }} | <i class="fa-solid fa-calendar-day"></i> 30/02/2021</p>
                     <p><i class="fa-solid fa-dollar-sign"></i> Premiação: R${{ $championship->award }},00</p>
                 </div>
 
                 <div class="container">
-                    <div class="text-white mt-5 mb-3">
+                    <div class="mt-5 mb-2">
                         <h3>Times:</h3>
                     </div>
 
                     <div class="row">
                       @foreach ($teams as $team)
                         <div class="col-lg-3 col-md-4 col-sm-6">
-                          <a href="/app/players" class="text-decoration-none">
-                            <div class="card p-2 text-center m-3">
+                            <div class="card text-black p-2 text-center m-3">
                               <i class="fa-solid fa-shield-halved"></i> <b>{{$team->name}}</b>
-                            </div>
-                          </a>  
+                            </div> 
                         </div>
                       @endforeach
                     </div>
+
+                    <div class="mt-3 mb-4">
+                        <h3>Jogos:</h3>
+                    </div>
+
+                    @foreach ($games as $game)
+                        <div class="text-center d-flex justify-content-around">
+                            <div class="d-flex justify-content-evenly w-75">
+                            <div class="text-center w-25">
+                                <p>{{$game->team1->name}} <i class="fa-solid fa-shield-halved"></i></p>
+                            </div>
+                            <div class="d-flex justify-content-evenly">
+                                <div class="mx-2">
+                                    @if ( $game->result == null)
+                                        <p><span><b></b> </span></p> 
+                                    @else
+                                        <p><span><b>{{$game->result->team1_goals}}</b> </span></p>
+                                    @endif
+                                </div>
+                                <div class="mx-2">
+                                    <p><span> X </span></p>
+                                </div>
+                                <div class="mx-2">
+                                    @if ( $game->result == null)
+                                        <P> <span><b></b></span></P>
+                                    @else
+                                        <P><span><b> {{$game->result->team2_goals}}</b></span></P>
+                                    @endif
+                                </div>
+                            </div>
+                            <div class="text-center w-25">
+                                <p><i class="fa-solid fa-shield-halved"></i> {{$game->team2->name}}</p>
+                            </div>
+                            </div>
+                        </div>
+                        <hr>
+                    @endforeach
+
                 </div>
 
             </div>
