@@ -50,7 +50,7 @@
                                 </form>
                                 -->
                                 <a href="/app/painel/{{ $championship->id }}" class="btn btn-register">
-                                    <i class="fa-solid fa-futbol"></i> Acessar
+                                    <i class="fa-solid fa-gear"></i> Gerenciar
                                 </a>
                             </div>
                         </div>
@@ -122,28 +122,28 @@
                     </div>
 
                     <!-- Modal Excluir Campeonato -->
-                  <div class="modal fade" id="modalDeleteCamp{{$championship->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                                <div>
-                                    <h5>Tem certeza que deseja apagar "{{ $championship->title }}"?</h5>
+                    <div class="modal fade" id="modalDeleteCamp{{$championship->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
-                                <form action="/app/championship/{{$championship->id}}" method="POST">
-                                    @csrf
-                                    @method('DELETE')
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Não</button>
-                                        <button type="submit" class="btn btn-primary"><ion-icon name="trash-outline"></ion-icon>Sim</button>
+                                <div class="modal-body">
+                                    <div>
+                                        <h5>Tem certeza que deseja apagar "{{ $championship->title }}"?</h5>
                                     </div>
-                                </form>
+                                    <form action="/app/championship/{{$championship->id}}" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Não</button>
+                                            <button type="submit" class="btn btn-primary"><ion-icon name="trash-outline"></ion-icon>Sim</button>
+                                        </div>
+                                    </form>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
 
                     @endforeach
                 </div>
