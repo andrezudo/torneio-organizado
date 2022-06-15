@@ -51,11 +51,16 @@ $rankings = '';
                                     <i class="fa-solid fa-pen"></i>
                                   </button>
                                   @if ( session('championship')->initiated == '0' )
+                                    <!--
                                     <form style="display: inline-block" action="/app/team/{{$team->id}}" method="POST">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" class="btn btn-danger mx-2 my-2 btn-sm"><i class="fa-solid fa-trash"></i></button>
                                     </form>
+                                    -->
+                                    <a class="btn btn-danger mx-2 my-2 btn-sm" data-bs-toggle="modal" data-bs-target="#modalDeleteTeam{{$team->id}}">
+                                        <i class="fa-solid fa-trash"></i>
+                                    </a>
                                   @endif
                                 </div>
                               </div>
@@ -85,6 +90,30 @@ $rankings = '';
                                   </div>
                               </div>
                             </div>
+                          </div>
+
+                          <!-- Modal Excluir time -->
+                          <div class="modal fade" id="modalDeleteTeam{{$team->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                              <div class="modal-dialog">
+                                  <div class="modal-content">
+                                      <div class="modal-header">
+                                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                      </div>
+                                      <div class="modal-body">
+                                          <div>
+                                              <h5>Tem certeza que deseja apagar o time "{{ $team->name }}"?</h5>
+                                          </div>
+                                          <form action="/app/team/{{$team->id}}" method="POST">
+                                              @csrf
+                                              @method('DELETE')
+                                              <div class="modal-footer">
+                                                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Não</button>
+                                                  <button type="submit" class="btn btn-primary"><ion-icon name="trash-outline"></ion-icon>Sim</button>
+                                              </div>
+                                          </form>
+                                      </div>
+                                  </div>
+                              </div>
                           </div>
 
 
