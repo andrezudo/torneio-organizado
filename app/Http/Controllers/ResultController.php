@@ -8,6 +8,7 @@ use App\Models\Team;
 use App\Models\Championship;
 use App\Models\Table;
 use App\Models\Result;
+use App\Models\Statistic;
 
 class ResultController extends Controller
 {
@@ -17,33 +18,111 @@ class ResultController extends Controller
         $result = new Result;
         if(isset($request->team1_goals)) {
             $team1_goals = count($request->team1_goals);
+
+            for ($i = 0; $i < $team1_goals; $i++) {
+                if ($request->team1_goals[$i] != '') {
+                    $statistic = new Statistic;
+                    $statistic->type = "gol";
+                    $statistic->player_id = $request->team1_goals[$i];
+                    $statistic->game_id = $request->game_id;
+                    $statistic->team_id = $request->team1_id;
+                    $statistic->adversary = $request->team2_id;
+                    $statistic->championship_id = $request->championship_id;
+                    $statistic->save();
+                }
+            }
         }else {
             $team1_goals = 0;
         }
         if(isset($request->team2_goals)) {
             $team2_goals = count($request->team2_goals);
+
+            for ($i = 0; $i < $team2_goals; $i++) {
+                if ($request->team2_goals[$i] != '') {
+                    $statistic = new Statistic;
+                    $statistic->type = "gol";
+                    $statistic->player_id = $request->team2_goals[$i];
+                    $statistic->game_id = $request->game_id;
+                    $statistic->team_id = $request->team2_id;
+                    $statistic->adversary = $request->team1_id;
+                    $statistic->championship_id = $request->championship_id;
+                    $statistic->save();
+                }
+            }
         }else {
             $team2_goals = 0;
         }
 
         if (isset($request->team1_yellowcard)) {
             $team1_yellowcard = count($request->team1_yellowcard);
+
+            for ($i = 0; $i < $team1_yellowcard; $i++) {
+                if ($request->team1_yellowcard[$i] != '') {
+                    $statistic = new Statistic;
+                    $statistic->type = "amarelo";
+                    $statistic->player_id = $request->team1_yellowcard[$i];
+                    $statistic->game_id = $request->game_id;
+                    $statistic->team_id = $request->team1_id;
+                    $statistic->adversary = $request->team2_id;
+                    $statistic->championship_id = $request->championship_id;
+                    $statistic->save();
+                }
+            }
         } else {
             $team1_yellowcard = 0;
         }
         if (isset($request->team2_yellowcard)) {
             $team2_yellowcard = count($request->team2_yellowcard);
+
+            for ($i = 0; $i < $team2_yellowcard; $i++) {
+                if ($request->team2_yellowcard[$i] != '') {
+                    $statistic = new Statistic;
+                    $statistic->type = "amarelo";
+                    $statistic->player_id = $request->team2_yellowcard[$i];
+                    $statistic->game_id = $request->game_id;
+                    $statistic->team_id = $request->team2_id;
+                    $statistic->adversary = $request->team1_id;
+                    $statistic->championship_id = $request->championship_id;
+                    $statistic->save();
+                }
+            }
         } else {
             $team2_yellowcard = 0;
         }
 
         if (isset($request->team1_redcard)) {
             $team1_redcard = count($request->team1_redcard);
+
+            for ($i = 0; $i < $team1_redcard; $i++) {
+                if ($request->team1_redcard[$i] != '') {
+                    $statistic = new Statistic;
+                    $statistic->type = "vermelho";
+                    $statistic->player_id = $request->team1_redcard[$i];
+                    $statistic->game_id = $request->game_id;
+                    $statistic->team_id = $request->team1_id;
+                    $statistic->adversary = $request->team2_id;
+                    $statistic->championship_id = $request->championship_id;
+                    $statistic->save();
+                }
+            }
         } else {
             $team1_redcard = 0;
         }
         if (isset($request->team2_redcard)) {
             $team2_redcard = count($request->team2_redcard);
+
+            for ($i = 0; $i < $team2_redcard; $i++) {
+                if ($request->team2_redcard[$i] != '') {
+                    $statistic = new Statistic;
+                    $statistic->type = "vermelho";
+                    $statistic->player_id = $request->team2_redcard[$i];
+                    $statistic->game_id = $request->game_id;
+                    $statistic->team_id = $request->team2_id;
+                    $statistic->adversary = $request->team1_id;
+                    $statistic->championship_id = $request->championship_id;
+                    $statistic->save();
+                }
+            }
         } else {
             $team2_redcard = 0;
         }
