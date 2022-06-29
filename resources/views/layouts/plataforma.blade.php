@@ -90,9 +90,9 @@
                       </a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link <?php echo $rankings ?>" href="/app/rankings">
+                      <a class="nav-link <?php echo $rankings ?>" href="/app/statistics/{{session('championship')->id}}">
                         <i class="fas fa-medal"></i>
-                        Rankings
+                        Estatísticas
                       </a>
                     </li>
                   </ul>
