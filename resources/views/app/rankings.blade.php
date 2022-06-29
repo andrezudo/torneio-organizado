@@ -15,30 +15,32 @@ $rankings = 'active';
                   <div class="container my-5">
 
                     <div class="card-rankings p-2 m-3">
-                        <div class="table-responsive">
-                            <table class="table text-white">
-                                <thead>
-                                <tr>
-                                    <th scope="col">Jogador</th>
-                                    <th scope="col">Gols</th>
-                                </tr>
-                                </thead>
-                                <tbody>
+
+                        @if ( $gols->count() == 0 )
+                            <div class="col-12 mb-5 mt-5 text-white text-center">
+                                <h4>Nenhum artilheiro por enquanto</h4>
+                            </div>
+                        @else
+                            <div class="table-responsive">
+                                <table class="table text-white">
+                                    <thead>
                                     <tr>
-                                        <td>André</td>
-                                        <td>10</td>
+                                        <th scope="col">Jogador</th>
+                                        <th scope="col">Gols</th>
                                     </tr>
-                                    <tr>
-                                        <td>Drogba</td>
-                                        <td>3</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Lewa</td>
-                                        <td>4</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
+                                    </thead>
+                                    <tbody>
+                                        @foreach ($gols as $gol)
+                                        <tr>
+                                            <td>{{$gol->player->name}}</td>
+                                            <td>{{$gol->qtd_gols}}</td>
+                                        </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
+                        @endif
+                        
                     </div>
 
                     <div class="card-rankings p-2 m-3">
