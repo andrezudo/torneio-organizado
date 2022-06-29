@@ -19,6 +19,7 @@ use App\Http\Controllers\PlayerController;
 use App\Http\Controllers\GameController;
 use App\Http\Controllers\TableController;
 use App\Http\Controllers\ResultController;
+use App\Http\Controllers\StatisticController;
 
 Route::get('/home', function(){
     return view('welcome');
@@ -64,6 +65,8 @@ Route::prefix('/app')->group(function(){
     Route::put('/update-result/{id}', [ResultController::class, 'update'])->middleware('auth');
 
     Route::get('/tabela/{id}', [TableController::class, 'tabela'])->middleware('auth')->name('tabela');
+
+    Route::get('/statistics/{id}', [StatisticController::class, 'statistics'])->middleware('auth')->name('statistics');
 
     Route::get('/tabela', function(){
         return view('app.tabela');
