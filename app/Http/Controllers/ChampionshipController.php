@@ -103,4 +103,10 @@ class ChampionshipController extends Controller
         return redirect()->route('games', ['id' => $id]);
     }
 
+    public function ultimosCampeonatos() {
+        $championships = Championship::with('user')->where('initiated', '=', 1)->orderByDesc('id')->limit(6)->get();   
+
+        return view('home', ['championships' => $championships]);
+    }
+
 }
