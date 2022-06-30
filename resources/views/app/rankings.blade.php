@@ -40,61 +40,61 @@ $rankings = 'active';
                                 </table>
                             </div>
                         @endif
-                        
+
                     </div>
 
                     <div class="card-rankings p-2 m-3">
-                        <div class="table-responsive">
-                            <table class="table text-white">
-                                <thead>
-                                <tr>
-                                    <th scope="col">Cartões Amarelos</th>
-                                    <th scope="col">Gols</th>
-                                </tr>
-                                </thead>
-                                <tbody>
+                        @if ( $amarelos->count() == 0 )
+                            <div class="col-12 mb-5 mt-5 text-white text-center">
+                                <h4>Nenhum amarelado por enquanto</h4>
+                            </div>
+                        @else
+                            <div class="table-responsive">
+                                <table class="table text-white">
+                                    <thead>
                                     <tr>
-                                        <td>Chico</td>
-                                        <td>5</td>
+                                        <th scope="col">Jogador</th>
+                                        <th scope="col">Cartões Amarelos</th>
                                     </tr>
-                                    <tr>
-                                        <td>Drogba</td>
-                                        <td>2</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Lewa</td>
-                                        <td>1</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
+                                    </thead>
+                                    <tbody>
+                                        @foreach ($amarelos as $amarelo)
+                                        <tr>
+                                            <td>{{$amarelo->player->name}}</td>
+                                            <td>{{$amarelo->qtd_amarelos}}</td>
+                                        </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
+                        @endif
                     </div>
 
                     <div class="card card-rankings p-2 m-3">
-                        <div class="table-responsive">
-                            <table class="table text-white">
-                                <thead>
-                                <tr>
-                                    <th scope="col">Cartões Vermelhos</th>
-                                    <th scope="col">Gols</th>
-                                </tr>
-                                </thead>
-                                <tbody>
+                        @if ( $vermelhos->count() == 0 )
+                            <div class="col-12 mb-5 mt-5 text-white text-center">
+                                <h4>Nenhum vermelhado por enquanto</h4>
+                            </div>
+                        @else
+                            <div class="table-responsive">
+                                <table class="table text-white">
+                                    <thead>
                                     <tr>
-                                        <td>Chico</td>
-                                        <td>3</td>
+                                        <th scope="col">Jogador</th>
+                                        <th scope="col">Cartões vermelhos</th>
                                     </tr>
-                                    <tr>
-                                        <td>Drogba</td>
-                                        <td>2</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Lewa</td>
-                                        <td>1</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
+                                    </thead>
+                                    <tbody>
+                                        @foreach ($vermelhos as $vermelho)
+                                        <tr>
+                                            <td>{{$vermelho->player->name}}</td>
+                                            <td>{{$vermelho->qtd_vermelhos}}</td>
+                                        </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
+                        @endif
                     </div>
 
                   </div>
