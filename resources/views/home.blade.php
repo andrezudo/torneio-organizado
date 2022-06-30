@@ -6,7 +6,7 @@
 
 <header>
     
-    <section class="mt-5">
+    <section class="mt-5 mb-3">
         <div class="container">
             <div class="row">
                 <div class="col-12 mb-5">
@@ -49,6 +49,31 @@
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="mt-5">
+        <div class="container text-white">
+            <h2>Últimos campeonatos iniciados:</h2>
+            <hr>
+
+            <div class="row">
+            @foreach ($championships as $championship)
+                <div class="col-12 col-md-4 mb-5">
+                    <div class="card text-center card-infos">
+                        <div class="card-body">
+                            <h3 class="card-title">{{$championship->title}}</h3>
+                            <p class="card-text"><i class="fa-solid fa-user"></i> {{$championship->user->name}}</p>
+                            <p class="card-text"><i class="fas fa-map-marker-alt"></i> {{$championship->localization}}</p>
+                            <p class="card-text"><i class="fas fa-calendar-day"></i> 30/12/2021</p>
+                            <a href="/site/campeonato/{{$championship->id}}" class="btn btn-dahsboard mx-2 my-2">
+                                <b><i class="fa-solid fa-arrow-pointer"></i> Página</b>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                @endforeach
             </div>
         </div>
     </section>
