@@ -16,7 +16,6 @@ class StatisticController extends Controller
                 ->where('type', '=', 'gol')
                 ->groupBy('player_id')
                 ->orderByDesc('qtd_gols')
-                ->limit(3)
                 ->get();
         
         $amarelos = Statistic::selectRaw('count(*) as qtd_amarelos, player_id')
@@ -25,7 +24,6 @@ class StatisticController extends Controller
                 ->where('type', '=', 'amarelo')
                 ->groupBy('player_id')
                 ->orderByDesc('qtd_amarelos')
-                ->limit(3)
                 ->get();
 
         $vermelhos = Statistic::selectRaw('count(*) as qtd_vermelhos, player_id')
@@ -34,7 +32,6 @@ class StatisticController extends Controller
                 ->where('type', '=', 'vermelho')
                 ->groupBy('player_id')
                 ->orderByDesc('qtd_vermelhos')
-                ->limit(3)
                 ->get();
 
         //echo $gols;
