@@ -25,9 +25,11 @@ Route::get('/home', function(){
     return view('welcome');
 });
 
-Route::get('/', function(){
+/*Route::get('/', function(){
     return view('home');
-});
+});*/
+
+Route::get('/', [ChampionshipController::class, 'ultimosCampeonatos']);
 
 /*Route::get('/campeonatos', function(){
     return view('campeonatos');
