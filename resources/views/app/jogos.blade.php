@@ -84,7 +84,12 @@ $rankings = '';
                         <div>
                             @if ( session('championship')->initiated == '1' )
                                 @if ( $game->result == null)
+                                    <!--
                                     <button style="background: #8BC34A;border-color: #8BC34A;" type="button" class="btn btn-warning mx-2 my-2 btn-sm" data-bs-toggle="modal" data-bs-target="#resultModal{{$game->id}}">
+                                        <i class="fas fa-futbol"></i>
+                                    </button>
+                                    -->
+                                    <button style="background: #8BC34A;border-color: #8BC34A;" type="button" class="btn btn-warning mx-2 my-2 btn-sm" data-bs-toggle="modal" data-bs-target="#resultTesteModal{{$game->id}}">
                                         <i class="fas fa-futbol"></i>
                                     </button>
                                 @else
@@ -93,9 +98,6 @@ $rankings = '';
                                     </button>
                                 @endif
                             @endif
-                            <button style="background: #8BC34A;border-color: #8BC34A;" type="button" class="btn btn-warning mx-2 my-2 btn-sm" data-bs-toggle="modal" data-bs-target="#resultTesteModal{{$game->id}}">
-                                <i class="fa-solid fa-triangle-exclamation"></i>
-                            </button>
                         </div>
                       </div>
                       <hr>
