@@ -22,4 +22,16 @@ class Game extends Model
         return $this->hasOne('App\Models\Result');
     }
 
+    public function gols() {
+        return $this->hasMany(Statistic::class)->where('type','gol');
+    }
+
+    public function amarelos() {
+        return $this->hasMany(Statistic::class)->where('type','amarelo');
+    }
+
+    public function vermelhos() {
+        return $this->hasMany(Statistic::class)->where('type','vermelho');
+    }
+
 }
