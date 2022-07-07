@@ -22,7 +22,7 @@ class GameController extends Controller
         //$championship = $request->session()->get('championship');
         $teams = $championship->teams;
         //$games = $championship->games;
-        $games = Game::with('team1','team2','result')->where('championship_id', '=', $id)->get();
+        $games = Game::with('team1','team2','result','gols','amarelos','vermelhos')->where('championship_id', '=', $id)->get();
 
         return view('app.jogos', ['teams' => $teams, 'games' => $games]);
     }
