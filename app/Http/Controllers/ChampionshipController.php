@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Championship;
 use App\Models\Team;
 use App\Models\Game;
+use App\Models\Table;
 
 class ChampionshipController extends Controller
 {
@@ -36,8 +37,15 @@ class ChampionshipController extends Controller
         $championship = Championship::findOrFail($id);
         $teams = $championship->teams;
         $games = Game::with('team1','team2','result')->where('championship_id', '=', $id)->get();
+        $tables = Table::with('team')
+                    ->where('Championship_id', '=', $id)
+                    ->orderBy('points', 'desc')
+                    ->orderBy('victory', 'desc')
+                    ->orderBy('sg', 'desc')
+                    ->orderBy('id', 'asc')
+                    ->get();
 
-        return view('site.campeonato', ['championship' => $championship, 'teams' => $teams, 'games' => $games]);
+        return view('site.campeonato', ['championship' => $championship, 'teams' => $teams, 'games' => $games, 'tables' => $tables]);
     }
 
     public function store(Request $request) {

@@ -6,8 +6,8 @@
 
     <header>
 
-        <section class="mt-5 text-white">
-            <div class="container">
+        <section class="mt-5 mb-5 text-white">
+            <div class="container mb-5">
                 
                 <div class="">
                     <h2>{{ $championship->title }}</h2>
@@ -30,43 +30,82 @@
                       @endforeach
                     </div>
 
+                    
+                    <div class="mt-5 mb-4">
+                        <h3>Tabela de classificação:</h3>
+                    </div>
+                    
+                    <div class="mb-5 card-rankings p-2">
+                        <div class="table-responsive">
+                            <table class="table text-white">
+                                <thead>
+                                    <tr>
+                                        <th scope="col"></th>
+                                        <th scope="col">Time</th>
+                                        <th scope="col">P</th>
+                                        <th scope="col">V</th>
+                                        <th scope="col">E</th>
+                                        <th scope="col">D</th>
+                                        <th scope="col">SG</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach ( $tables as $table )
+                                    <tr>
+                                        <th scope="row">{{$loop->iteration}}º</th>
+                                        <td>{{ $table->team->name }}</td>
+                                        <td><b>{{ $table->points }}</b></td>
+                                        <td>{{ $table->victory }}</td>
+                                        <td>{{ $table->draw }}</td>
+                                        <td>{{ $table->defeat }}</td>
+                                        <td>{{ $table->sg }}</td>
+                                    </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    
                     <div class="mt-3 mb-4">
                         <h3>Jogos:</h3>
                     </div>
 
+                    <div class="card-rankings p-2">
+                    <hr>
                     @foreach ($games as $game)
                         <div class="text-center d-flex justify-content-around">
                             <div class="d-flex justify-content-evenly w-75">
-                            <div class="text-center w-25">
-                                <p>{{$game->team1->name}} <i class="fa-solid fa-shield-halved"></i></p>
-                            </div>
-                            <div class="d-flex justify-content-evenly">
-                                <div class="mx-2">
-                                    @if ( $game->result == null)
-                                        <p><span><b></b> </span></p> 
-                                    @else
-                                        <p><span><b>{{$game->result->team1_goals}}</b> </span></p>
-                                    @endif
+                                <div class="text-center w-25">
+                                    <p>{{$game->team1->name}} <i class="fa-solid fa-shield-halved"></i></p>
                                 </div>
-                                <div class="mx-2">
-                                    <p><span> X </span></p>
+                                <div class="d-flex justify-content-evenly">
+                                    <div class="mx-2">
+                                        @if ( $game->result == null)
+                                            <p><span><b></b> </span></p> 
+                                        @else
+                                            <p><span><b>{{$game->result->team1_goals}}</b> </span></p>
+                                        @endif
+                                    </div>
+                                    <div class="mx-2">
+                                        <p><span> X </span></p>
+                                    </div>
+                                    <div class="mx-2">
+                                        @if ( $game->result == null)
+                                            <P> <span><b></b></span></P>
+                                        @else
+                                            <P><span><b> {{$game->result->team2_goals}}</b></span></P>
+                                        @endif
+                                    </div>
                                 </div>
-                                <div class="mx-2">
-                                    @if ( $game->result == null)
-                                        <P> <span><b></b></span></P>
-                                    @else
-                                        <P><span><b> {{$game->result->team2_goals}}</b></span></P>
-                                    @endif
+                                <div class="text-center w-25">
+                                    <p><i class="fa-solid fa-shield-halved"></i> {{$game->team2->name}}</p>
                                 </div>
-                            </div>
-                            <div class="text-center w-25">
-                                <p><i class="fa-solid fa-shield-halved"></i> {{$game->team2->name}}</p>
-                            </div>
                             </div>
                         </div>
                         <hr>
                     @endforeach
-
+                    </div>
+                    
                 </div>
 
             </div>
