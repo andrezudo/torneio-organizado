@@ -46,7 +46,7 @@
             <form action="/logout" method="POST">
                 @csrf
                 <a href="/logout" 
-                    class="btn btn-login mx-2 my-2"
+                    class="btn btn-danger mx-2 my-2"
                     onclick="event.preventDefault();
                     this.closest('form').submit();">
                     <b>

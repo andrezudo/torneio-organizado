@@ -36,10 +36,10 @@
                                 <h3 class="card-title">{{$championship->title}}</h3>
                                 <p class="card-text"><i class="fas fa-map-marker-alt"></i> {{$championship->localization}}</p>
                                 <p class="card-text"><i class="fas fa-calendar-day"></i> 30/12/2021</p>
-                                <a class="btn btn-register" data-bs-toggle="modal" data-bs-target="#modalEditCamp{{$championship->id}}">
+                                <a class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#modalEditCamp{{$championship->id}}">
                                     <i class="fa-solid fa-pen"></i> Editar
                                 </a>
-                                <a class="btn btn-register" data-bs-toggle="modal" data-bs-target="#modalDeleteCamp{{$championship->id}}">
+                                <a class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modalDeleteCamp{{$championship->id}}">
                                     <i class="fa-solid fa-trash"></i> Apagar
                                 </a>
                                 <!--

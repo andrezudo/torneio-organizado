@@ -24,7 +24,7 @@ $rankings = '';
                         <div class="">
                           <a href="/site/campeonato/{{$championship->id}}" class="btn btn-dahsboard mx-2 my-2"><b><i class="fa-solid fa-arrow-pointer"></i> Página</b></a>
 
-                          <button type="button" class="btn btn-register mx-2 my-2" data-bs-toggle="modal" data-bs-target="#modalEditCamp{{$championship->id}}">
+                          <button type="button" class="btn btn-warning mx-2 my-2" data-bs-toggle="modal" data-bs-target="#modalEditCamp{{$championship->id}}">
                             <i class="fa-solid fa-pen"></i> Editar
                           </button>
                           <form style="display: inline-block" action="/app/championship/{{$championship->id}}" method="POST">
