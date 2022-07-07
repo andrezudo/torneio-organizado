@@ -12,7 +12,7 @@ $rankings = 'active';
     
 @section('content')
                 
-                  <div class="container my-5">
+            <div class="container my-5">
 
                 <div class="barra-navegacao">
                     <ul class="nav nav-tabs mb-5" id="myTab" role="tablist">
@@ -121,9 +121,6 @@ $rankings = 'active';
 
                     </div>
 
-
-
-
-                  </div>
+            </div>
 
 @endsection
