@@ -93,7 +93,12 @@ $rankings = '';
                                         <i class="fas fa-futbol"></i>
                                     </button>
                                 @else
+                                    <!--
                                     <button type="button" class="btn btn-warning mx-2 my-2 btn-sm" data-bs-toggle="modal" data-bs-target="#resultEditModal{{$game->id}}">
+                                        <i class="fas fa-pen"></i>
+                                    </button>
+                                    -->
+                                    <button type="button" class="btn btn-warning mx-2 my-2 btn-sm" data-bs-toggle="modal" data-bs-target="#resultEditModalTest{{$game->id}}">
                                         <i class="fas fa-pen"></i>
                                     </button>
                                 @endif
@@ -164,6 +169,163 @@ $rankings = '';
                                 </form>
                             </div>
                         </div>
+                        </div>
+                      </div>
+
+                      <!-- Modal Editar Resultado Teste-->
+                      <div class="modal fade" id="resultEditModalTest{{$game->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-lg">
+                            <div class="modal-content text-black">
+                                <div class="modal-header">
+                                <h5 class="modal-title text-black" id="exampleModalLabel">Editar Resultado</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <form action="/app/update-result/{{$game->result->id}}" method="POST">
+                                        @csrf
+                                        @method('PUT')
+                                        <div class="mb-3">
+                                            <input type="text" class="form-control" id="championship_id" name="championship_id" value="{{session('championship')->id}}" style="display: none;">
+                                            <input type="text" class="form-control" id="game_id" name="game_id" value="{{$game->id}}" style="display: none;">
+                                            <input type="text" class="form-control" id="team1_id" name="team1_id" value="{{$game->team1_id}}" style="display: none;">
+                                            <input type="text" class="form-control" id="team2_id" name="team2_id" value="{{$game->team2_id}}" style="display: none;">
+                                        </div>
+                                        <div class="mb-5">
+                                            <div class="row">
+                                                <div class="col-sm-12">
+                                                    <h4>{{$game->team1->name}}</h4>
+                                                </div>
+                                                <div class="col-sm-4 container-gols-t1{{$game->id}}">
+                                                    <label class="form-label">Gols</label>
+                                                    <a class="btn btn-sm btn-primary add_gol_t1{{$game->id}}"><i class="fa-solid fa-plus"></i></a>
+                                                    @foreach ($game->gols as $team1_goals)
+                                                        @if ($team1_goals->team_id == $game->team1->id)
+                                                            <div class="row mt-2">
+                                                                <div class="col-10">
+                                                                    <select class="form-select" id="team1_goals" name="team1_goals[]" aria-label="Default select example">
+                                                                        <option selected value="futebol">Selecione o Jogador</option>
+                                                                        @foreach ( $game->team1->players as $playerr1)
+                                                                        <option value="{{$playerr1->id}}" {{$team1_goals->player_id == $playerr1->id ? "selected='selected'" : ""}}>{{$playerr1->name}}</option>
+                                                                        @endforeach
+                                                                    </select>
+                                                                </div>
+                                                                <a class="btn btn-sm btn-primary delete col-2"><i class="fa-solid fa-minus"></i></a>
+                                                            </div>
+                                                        @endif
+                                                    @endforeach
+                                                </div>
+                                                <div class="col-sm-4 container-ca-t1{{$game->id}}">
+                                                    <label class="form-label">Cartões amarelos</label>
+                                                    <a class="btn btn-sm btn-primary add_ca_t1{{$game->id}}"><i class="fa-solid fa-plus"></i></a>
+                                                    @foreach ($game->amarelos as $team1_yellowcards)
+                                                        @if ($team1_yellowcards->team_id == $game->team1->id)
+                                                            <div class="row mt-2">
+                                                                <div class="col-10">
+                                                                    <select class="form-select" id="team1_yellowcard" name="team1_yellowcard[]" aria-label="Default select example">
+                                                                        <option selected value="futebol">Selecione o Jogador</option>
+                                                                        @foreach ( $game->team1->players as $playerr1)
+                                                                        <option value="{{$playerr1->id}}" {{$team1_yellowcards->player_id == $playerr1->id ? "selected='selected'" : ""}}>{{$playerr1->name}}</option>
+                                                                        @endforeach
+                                                                    </select>
+                                                                </div>
+                                                                <a class="btn btn-sm btn-primary delete col-2"><i class="fa-solid fa-minus"></i></a>
+                                                            </div>
+                                                        @endif
+                                                    @endforeach
+                                                </div>
+                                                <div class="col-sm-4 container-cv-t1{{$game->id}}">
+                                                    <label class="form-label">Cartões vermelhos</label>
+                                                    <a class="btn btn-sm btn-primary add_cv_t1{{$game->id}}"><i class="fa-solid fa-plus"></i></a>
+                                                    @foreach ($game->vermelhos as $team1_redcards)
+                                                        @if ($team1_redcards->team_id == $game->team1->id)
+                                                            <div class="row mt-2">
+                                                                <div class="col-10">
+                                                                    <select class="form-select" id="team1_redcard" name="team1_redcard[]" aria-label="Default select example">
+                                                                        <option selected value="futebol">Selecione o Jogador</option>
+                                                                        @foreach ( $game->team1->players as $playerr1)
+                                                                        <option value="{{$playerr1->id}}" {{$team1_redcards->player_id == $playerr1->id ? "selected='selected'" : ""}}>{{$playerr1->name}}</option>
+                                                                        @endforeach
+                                                                    </select>
+                                                                </div>
+                                                                <a class="btn btn-sm btn-primary delete col-2"><i class="fa-solid fa-minus"></i></a>
+                                                            </div>
+                                                        @endif
+                                                    @endforeach
+                                                </div>
+                                            </div>  
+                                        </div>
+                                        <hr>
+                                        <div class="mb-3 mt-5">
+                                            <div class="row">
+                                                <div class="col-sm-12">
+                                                    <h4>{{$game->team2->name}}</h4>
+                                                </div>
+                                                <div class="col-sm-4 container-gols-t2{{$game->id}}">
+                                                    <label class="form-label">Gols</label> 
+                                                    <a class="btn btn-sm btn-primary add_gol_t2{{$game->id}}"><i class="fa-solid fa-plus"></i></a>
+                                                    @foreach ($game->gols as $team2_goals)
+                                                        @if ($team2_goals->team_id == $game->team2->id)
+                                                            <div class="row mt-2">
+                                                                <div class="col-10">
+                                                                    <select class="form-select" id="team2_goals" name="team2_goals[]" aria-label="Default select example">
+                                                                        <option selected value="futebol">Selecione o Jogador</option>
+                                                                        @foreach ( $game->team2->players as $playerr2)
+                                                                        <option value="{{$playerr2->id}}" {{$team2_goals->player_id == $playerr2->id ? "selected='selected'" : ""}}>{{$playerr2->name}}</option>
+                                                                        @endforeach
+                                                                    </select>
+                                                                </div>
+                                                                <a class="btn btn-sm btn-primary delete col-2"><i class="fa-solid fa-minus"></i></a>
+                                                            </div>
+                                                        @endif
+                                                    @endforeach
+                                                </div>
+                                                <div class="col-sm-4 container-ca-t2{{$game->id}}">
+                                                    <label class="form-label">Cartões amarelos</label>
+                                                    <a class="btn btn-sm btn-primary add_ca_t2{{$game->id}}"><i class="fa-solid fa-plus"></i></a>
+                                                    @foreach ($game->amarelos as $team2_yellowcards)
+                                                        @if ($team2_yellowcards->team_id == $game->team2->id)
+                                                            <div class="row mt-2">
+                                                                <div class="col-10">
+                                                                    <select class="form-select" id="team2_yellowcard" name="team2_yellowcard[]" aria-label="Default select example">
+                                                                        <option selected value="futebol">Selecione o Jogador</option>
+                                                                        @foreach ( $game->team2->players as $playerr2)
+                                                                        <option value="{{$playerr2->id}}" {{$team2_yellowcards->player_id == $playerr2->id ? "selected='selected'" : ""}}>{{$playerr2->name}}</option>
+                                                                        @endforeach
+                                                                    </select>
+                                                                </div>
+                                                                <a class="btn btn-sm btn-primary delete col-2"><i class="fa-solid fa-minus"></i></a>
+                                                            </div>
+                                                        @endif
+                                                    @endforeach
+                                                </div>
+                                                <div class="col-sm-4 container-cv-t2{{$game->id}}">
+                                                    <label class="form-label">Cartões vermelhos</label>
+                                                    <a class="btn btn-sm btn-primary add_cv_t2{{$game->id}}"><i class="fa-solid fa-plus"></i></a>
+                                                    @foreach ($game->vermelhos as $team2_redcards)
+                                                        @if ($team2_redcards->team_id == $game->team2->id)
+                                                            <div class="row mt-2">
+                                                                <div class="col-10">
+                                                                    <select class="form-select" id="team2_redcard" name="team2_redcard[]" aria-label="Default select example">
+                                                                        <option selected value="futebol">Selecione o Jogador</option>
+                                                                        @foreach ( $game->team2->players as $playerr2)
+                                                                        <option value="{{$playerr2->id}}" {{$team2_redcards->player_id == $playerr2->id ? "selected='selected'" : ""}}>{{$playerr2->name}}</option>
+                                                                        @endforeach
+                                                                    </select>
+                                                                </div>
+                                                                <a class="btn btn-sm btn-primary delete col-2"><i class="fa-solid fa-minus"></i></a>
+                                                            </div>
+                                                        @endif
+                                                    @endforeach
+                                                </div>
+                                            </div>  
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                                            <button type="submit" class="btn btn-primary">Salvar</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
                         </div>
                       </div>
                       @endif
