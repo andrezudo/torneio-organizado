@@ -174,15 +174,135 @@ class ResultController extends Controller
 
     public function update(Request $request) {
 
-        $result = new Result;
+        $deleted_statistics = Statistic::where('game_id', $request->game_id)->delete();
+
+        if(isset($request->team1_goals)) {
+            $team1_goals = count($request->team1_goals);
+
+            for ($i = 0; $i < $team1_goals; $i++) {
+                if ($request->team1_goals[$i] != '') {
+                    $statistic = new Statistic;
+                    $statistic->type = "gol";
+                    $statistic->player_id = $request->team1_goals[$i];
+                    $statistic->game_id = $request->game_id;
+                    $statistic->team_id = $request->team1_id;
+                    $statistic->adversary = $request->team2_id;
+                    $statistic->championship_id = $request->championship_id;
+                    $statistic->save();
+                }
+            }
+        }else {
+            $team1_goals = 0;
+        }
+        if(isset($request->team2_goals)) {
+            $team2_goals = count($request->team2_goals);
+
+            for ($i = 0; $i < $team2_goals; $i++) {
+                if ($request->team2_goals[$i] != '') {
+                    $statistic = new Statistic;
+                    $statistic->type = "gol";
+                    $statistic->player_id = $request->team2_goals[$i];
+                    $statistic->game_id = $request->game_id;
+                    $statistic->team_id = $request->team2_id;
+                    $statistic->adversary = $request->team1_id;
+                    $statistic->championship_id = $request->championship_id;
+                    $statistic->save();
+                }
+            }
+        }else {
+            $team2_goals = 0;
+        }
+
+        if (isset($request->team1_yellowcard)) {
+            $team1_yellowcard = count($request->team1_yellowcard);
+
+            for ($i = 0; $i < $team1_yellowcard; $i++) {
+                if ($request->team1_yellowcard[$i] != '') {
+                    $statistic = new Statistic;
+                    $statistic->type = "amarelo";
+                    $statistic->player_id = $request->team1_yellowcard[$i];
+                    $statistic->game_id = $request->game_id;
+                    $statistic->team_id = $request->team1_id;
+                    $statistic->adversary = $request->team2_id;
+                    $statistic->championship_id = $request->championship_id;
+                    $statistic->save();
+                }
+            }
+        } else {
+            $team1_yellowcard = 0;
+        }
+        if (isset($request->team2_yellowcard)) {
+            $team2_yellowcard = count($request->team2_yellowcard);
+
+            for ($i = 0; $i < $team2_yellowcard; $i++) {
+                if ($request->team2_yellowcard[$i] != '') {
+                    $statistic = new Statistic;
+                    $statistic->type = "amarelo";
+                    $statistic->player_id = $request->team2_yellowcard[$i];
+                    $statistic->game_id = $request->game_id;
+                    $statistic->team_id = $request->team2_id;
+                    $statistic->adversary = $request->team1_id;
+                    $statistic->championship_id = $request->championship_id;
+                    $statistic->save();
+                }
+            }
+        } else {
+            $team2_yellowcard = 0;
+        }
+
+        if (isset($request->team1_redcard)) {
+            $team1_redcard = count($request->team1_redcard);
+
+            for ($i = 0; $i < $team1_redcard; $i++) {
+                if ($request->team1_redcard[$i] != '') {
+                    $statistic = new Statistic;
+                    $statistic->type = "vermelho";
+                    $statistic->player_id = $request->team1_redcard[$i];
+                    $statistic->game_id = $request->game_id;
+                    $statistic->team_id = $request->team1_id;
+                    $statistic->adversary = $request->team2_id;
+                    $statistic->championship_id = $request->championship_id;
+                    $statistic->save();
+                }
+            }
+        } else {
+            $team1_redcard = 0;
+        }
+        if (isset($request->team2_redcard)) {
+            $team2_redcard = count($request->team2_redcard);
+
+            for ($i = 0; $i < $team2_redcard; $i++) {
+                if ($request->team2_redcard[$i] != '') {
+                    $statistic = new Statistic;
+                    $statistic->type = "vermelho";
+                    $statistic->player_id = $request->team2_redcard[$i];
+                    $statistic->game_id = $request->game_id;
+                    $statistic->team_id = $request->team2_id;
+                    $statistic->adversary = $request->team1_id;
+                    $statistic->championship_id = $request->championship_id;
+                    $statistic->save();
+                }
+            }
+        } else {
+            $team2_redcard = 0;
+        }
+
+        /*
+        echo $team1_goals.' - '.$team2_goals.'<br>';
+        echo $team1_yellowcard.' - '.$team2_yellowcard.'<br>';
+        echo $team1_redcard.' - '.$team2_redcard;
+        */
+
+        //$result = new Result;
+        $result = Result::where('id', '=', $request->id)->firstOrFail();
         $result->championship_id = $request->championship_id;
         $result->game_id = $request->game_id;
-        $result->team1_goals = $request->team1_goals;
-        $result->team1_yellowcard = $request->team1_yellowcard;
-        $result->team1_redcard = $request->team1_redcard;
-        $result->team2_goals = $request->team2_goals;
-        $result->team2_yellowcard = $request->team2_yellowcard;
-        $result->team2_redcard = $request->team2_redcard;
+        $result->team1_goals = $team1_goals;
+        $result->team1_yellowcard = $team1_yellowcard;
+        $result->team1_redcard = $team1_redcard;
+        $result->team2_goals = $team2_goals;
+        $result->team2_yellowcard = $team2_yellowcard;
+        $result->team2_redcard = $team2_redcard;
 
         $game = Game::where('id', '=', $request->game_id)->firstOrFail();
 
@@ -210,18 +330,18 @@ class ResultController extends Controller
         }
         
         //adiciona o novo saldo de gols e pontuação na tabela
-        $table1->sg = $table1->sg + ($request->team1_goals - $request->team2_goals);
-        $table2->sg = $table2->sg + ($request->team2_goals - $request->team1_goals);
+        $table1->sg = $table1->sg + ($team1_goals - $team2_goals);
+        $table2->sg = $table2->sg + ($team2_goals - $team1_goals);
 
-        if( $request->team1_goals > $request->team2_goals){ //vitória do time 1
+        if( $team1_goals > $team2_goals){ //vitória do time 1
             $table1->points = $table1->points + 3;
             $table1->victory = $table1->victory + 1;
             $table2->defeat = $table2->defeat + 1;
-        }elseif($request->team1_goals < $request->team2_goals){ //empate
+        }elseif($team1_goals < $team2_goals){ //empate
             $table2->points = $table2->points + 3;
             $table2->victory = $table2->victory + 1;
             $table1->defeat = $table1->defeat + 1;
-        }elseif ($request->team1_goals == $request->team2_goals) { //vitória do time 2
+        }elseif ($team1_goals == $team2_goals) { //vitória do time 2
             $table1->points = $table1->points + 1;
             $table2->points = $table2->points + 1;
             $table2->draw = $table2->draw + 1;
@@ -230,7 +350,8 @@ class ResultController extends Controller
 
         $table1->save();
         $table2->save();
-        Result::findOrFail($request->id)->update($request->all());
+        $result->save();
+        //Result::findOrFail($request->id)->update($request->all());
 
         return redirect()->route('games', ['id' => $request->championship_id]);
     }
