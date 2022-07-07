@@ -7,6 +7,7 @@ use App\Models\Championship;
 use App\Models\Team;
 use App\Models\Game;
 use App\Models\Table;
+use App\Models\Statistic;
 
 class ChampionshipController extends Controller
 {
@@ -44,8 +45,38 @@ class ChampionshipController extends Controller
                     ->orderBy('sg', 'desc')
                     ->orderBy('id', 'asc')
                     ->get();
+        $gols = Statistic::selectRaw('count(*) as qtd_gols, player_id')
+                    ->with('player')
+                    ->where('championship_id', '=', $id)
+                    ->where('type', '=', 'gol')
+                    ->groupBy('player_id')
+                    ->orderByDesc('qtd_gols')
+                    ->get();
+        $amarelos = Statistic::selectRaw('count(*) as qtd_amarelos, player_id')
+                    ->with('player')
+                    ->where('championship_id', '=', $id)
+                    ->where('type', '=', 'amarelo')
+                    ->groupBy('player_id')
+                    ->orderByDesc('qtd_amarelos')
+                    ->get();
+        $vermelhos = Statistic::selectRaw('count(*) as qtd_vermelhos, player_id')
+                    ->with('player')
+                    ->where('championship_id', '=', $id)
+                    ->where('type', '=', 'vermelho')
+                    ->groupBy('player_id')
+                    ->orderByDesc('qtd_vermelhos')
+                    ->get();
 
-        return view('site.campeonato', ['championship' => $championship, 'teams' => $teams, 'games' => $games, 'tables' => $tables]);
+        return view('site.campeonato', 
+                    [
+                        'championship' => $championship, 
+                        'teams' => $teams, 
+                        'games' => $games, 
+                        'tables' => $tables, 
+                        'gols' => $gols, 
+                        'amarelos' => $amarelos, 
+                        'vermelhos' => $vermelhos
+                    ]);
     }
 
     public function store(Request $request) {
