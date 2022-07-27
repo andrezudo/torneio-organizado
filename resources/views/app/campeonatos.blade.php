@@ -36,10 +36,10 @@
                                 <h3 class="card-title">{{$championship->title}}</h3>
                                 <p class="card-text"><i class="fas fa-map-marker-alt"></i> {{$championship->localization}}</p>
                                 <p class="card-text"><i class="fas fa-calendar-day"></i> 30/12/2021</p>
-                                <a class="btn btn-warning mb-1" data-bs-toggle="modal" data-bs-target="#modalEditCamp{{$championship->id}}">
+                                <a class="btn btn-warning mb-1 btn-sm" data-bs-toggle="modal" data-bs-target="#modalEditCamp{{$championship->id}}">
                                     <i class="fa-solid fa-pen"></i> Editar
                                 </a>
-                                <a class="btn btn-danger mb-1" data-bs-toggle="modal" data-bs-target="#modalDeleteCamp{{$championship->id}}">
+                                <a class="btn btn-danger mb-1 btn-sm" data-bs-toggle="modal" data-bs-target="#modalDeleteCamp{{$championship->id}}">
                                     <i class="fa-solid fa-trash"></i> Apagar
                                 </a>
                                 <!--
@@ -49,7 +49,7 @@
                                     <button type="submit" class="btn btn-dahsboard"><ion-icon name="trash-outline"></ion-icon>Apagar</button>
                                 </form>
                                 -->
-                                <a href="/app/painel/{{ $championship->id }}" class="btn btn-register mb-1">
+                                <a href="/app/painel/{{ $championship->id }}" class="btn btn-register mb-1 btn-sm">
                                     <i class="fa-solid fa-gear"></i> Gerenciar
                                 </a>
                             </div>
