@@ -70,11 +70,11 @@
                                         @method('PUT')
                                         <div class="mb-3">
                                         <label for="title" class="form-label">Campeonato:</label>
-                                        <input type="text" class="form-control" id="title" name="title" placeholder="Nome do Campeonato" value="{{ $championship->title }}">
+                                        <input type="text" class="form-control" id="title" name="title" required placeholder="Nome do Campeonato" value="{{ $championship->title }}">
                                         </div>
                                         <div class="mb-3">
                                             <label for="localization" class="form-label">Local:</label>
-                                            <input type="text" class="form-control" id="localization" name="localization" placeholder="Onde ocorrerá o Campeonato" value="{{ $championship->localization }}">
+                                            <input type="text" class="form-control" id="localization" name="localization" required placeholder="Onde ocorrerá o Campeonato" value="{{ $championship->localization }}">
                                         </div>
                                         <div class="mb-3">
                                             <label for="award" class="form-label">Valor da premiação:</label>
@@ -163,11 +163,11 @@
                         @csrf
                         <div class="mb-3">
                         <label for="title" class="form-label">Campeonato:</label>
-                        <input type="text" class="form-control" id="title" name="title" placeholder="Nome do Campeonato">
+                        <input type="text" class="form-control" id="title" name="title" required placeholder="Nome do Campeonato">
                         </div>
                         <div class="mb-3">
                             <label for="localization" class="form-label">Local:</label>
-                            <input type="text" class="form-control" id="localization" name="localization" placeholder="Onde ocorrerá o Campeonato">
+                            <input type="text" class="form-control" id="localization" name="localization" required placeholder="Onde ocorrerá o Campeonato">
                         </div>
                         <div class="mb-3">
                             <label for="award" class="form-label">Valor da premiação:</label>
