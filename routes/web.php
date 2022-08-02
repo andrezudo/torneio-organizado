@@ -90,11 +90,11 @@ Route::prefix('/site')->group(function(){
 
 
 
-/*Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
+Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('home');
-})->name('home');*/
+})->name('home');
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/', [ChampionshipController::class, 'ultimosCampeonatos']);
+/*Route::middleware(['auth:sanctum', 'verified'])->get('/', [ChampionshipController::class, 'ultimosCampeonatos']);*/
 
 /*Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
