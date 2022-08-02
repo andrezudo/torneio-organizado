@@ -68,7 +68,7 @@
                             <p class="card-text"><i class="fas fa-map-marker-alt"></i> {{$championship->localization}}</p>
                             <p class="card-text"><i class="fas fa-calendar-day"></i> 30/12/2021</p>
                             <a href="/site/campeonato/{{$championship->id}}" class="btn btn-dahsboard mx-2 my-2 btn-sm">
-                                <b><i class="fa-solid fa-arrow-pointer"></i> Página</b>
+                                <b><i class="fa-solid fa-arrow-pointer"></i> Acompanhar campeonato</b>
                             </a>
                         </div>
                     </div>
