@@ -13,10 +13,18 @@ $rankings = '';
 @section('content')
                 
         <div class="container mt-5">
-          
+
+          <div class="row mt-5 mb-4 text-white">
+            <div class="d-flex justify-content-between mb-5">
               <div class="text-white">
                 <h2>Classificação do campeonato</h2>
               </div>
+              <div>
+                <p><small>P = Pontos | V = Vitórias | E = Empates | D = Derrotas | SG = Saldo de gols</small></p>
+              </div>
+            </div>
+          </div>
+          
 
                 <div class="mt-5 mb-5">
     
