@@ -112,6 +112,8 @@ class ChampionshipController extends Controller
         
         $championship->return = $request->return;
         $championship->initiated = '0';
+        $championship->start = $request->start;
+        $championship->end = $request->end;
 
         $user = auth()->user();
         $championship->user_id = $user->id;
