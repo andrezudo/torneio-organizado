@@ -111,6 +111,14 @@
                                                 <option value="0" {{$championship->return == 0 ? "selected='selected'" : ""}}>Não</option>
                                             </select>
                                         </div>
+                                        <div class="mb-3">
+                                            <label for="start" class="form-label">Data de início:</label>
+                                            <input type="date" class="form-control" id="start" name="start" value="{{ $championship->start }}">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="end" class="form-label">Data de fim:</label>
+                                            <input type="date" class="form-control" id="end" name="end" value="{{ $championship->end }}">
+                                        </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
                                             <button type="submit" class="btn btn-primary">Salvar</button>
@@ -203,6 +211,14 @@
                                 <option selected value="1">Sim</option>
                                 <option value="0">Não</option>
                             </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="start" class="form-label">Data de início:</label>
+                            <input type="date" class="form-control" id="start" name="start">
+                        </div>
+                        <div class="mb-3">
+                            <label for="end" class="form-label">Data de fim:</label>
+                            <input type="date" class="form-control" id="end" name="end">
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
