@@ -12,7 +12,7 @@
                     <div class="text-white d-flex justify-content-between mb-5">
                         <h2>Meus campeonatos</h2>
                         <!-- Button trigger modal -->
-                        <button type="button" class="btn btn-register" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        <button type="button" class="btn btn-register btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal">
                             <i class="fa-solid fa-plus"></i> Adicionar Campeonato
                         </button>
                     </div>
@@ -35,7 +35,8 @@
                             <div class="card-body">
                                 <h3 class="card-title">{{$championship->title}}</h3>
                                 <p class="card-text"><i class="fas fa-map-marker-alt"></i> {{$championship->localization}}</p>
-                                <p class="card-text"><i class="fas fa-calendar-day"></i> 30/12/2021</p>
+                                <p class="card-text"><i class="fas fa-calendar-day"></i> {{ date('d/m/Y', strtotime($championship->start)) }}</p>
+                                <p class="card-text"><i class="fas fa-calendar-day"></i> {{ date('d/m/Y', strtotime($championship->end)) }}</p>
                                 <a class="btn btn-warning mb-1 btn-sm" data-bs-toggle="modal" data-bs-target="#modalEditCamp{{$championship->id}}">
                                     <i class="fa-solid fa-pen"></i> Editar
                                 </a>
@@ -113,11 +114,11 @@
                                         </div>
                                         <div class="mb-3">
                                             <label for="start" class="form-label">Data de início:</label>
-                                            <input type="date" class="form-control" id="start" name="start" value="{{ $championship->start }}">
+                                            <input type="date" class="form-control" id="start" name="start" required value="{{ $championship->start }}">
                                         </div>
                                         <div class="mb-3">
                                             <label for="end" class="form-label">Data de fim:</label>
-                                            <input type="date" class="form-control" id="end" name="end" value="{{ $championship->end }}">
+                                            <input type="date" class="form-control" id="end" name="end" required value="{{ $championship->end }}">
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
@@ -214,11 +215,11 @@
                         </div>
                         <div class="mb-3">
                             <label for="start" class="form-label">Data de início:</label>
-                            <input type="date" class="form-control" id="start" name="start">
+                            <input type="date" class="form-control" id="start" name="start" required>
                         </div>
                         <div class="mb-3">
                             <label for="end" class="form-label">Data de fim:</label>
-                            <input type="date" class="form-control" id="end" name="end">
+                            <input type="date" class="form-control" id="end" name="end" required>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
