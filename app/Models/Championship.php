@@ -11,6 +11,9 @@ class Championship extends Model
 
     protected $guarded = [];
 
+    protected $start = ['start'];
+    protected $end = ['end'];
+
     public function user() {
         return $this->belongsTo('App\Models\User');
     }
