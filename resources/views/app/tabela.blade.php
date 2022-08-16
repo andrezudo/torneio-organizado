@@ -20,7 +20,7 @@ $rankings = '';
                 <h2>Classificação do campeonato</h2>
               </div>
               <div>
-                <p><small>P = Pontos | V = Vitórias | E = Empates | D = Derrotas | SG = Saldo de gols</small></p>
+                <!--<p><small>P = Pontos | V = Vitórias | E = Empates | D = Derrotas | SG = Saldo de gols</small></p>-->
               </div>
             </div>
           </div>

@@ -11,9 +11,9 @@
                 
                 <div class="">
                     <h2>{{ $championship->title }}</h2>
-                    <p><i class="fa-solid fa-location-dot"></i> {{ $championship->localization }}</p>
+                    <p><i class="fa-solid fa-location-dot"></i> {{ $championship->localization }} | Campeonato de {{ $championship->modality }}</p>
                     <p class="card-text"><i class="fas fa-calendar-day"></i> Início: {{ date('d/m/Y', strtotime($championship->start)) }} | Fim: {{ date('d/m/Y', strtotime($championship->end)) }}</p>
-                    <p><i class="fa-solid fa-dollar-sign"></i> Premiação: R${{ $championship->award }},00</p>
+                    <p><i class="fa-solid fa-dollar-sign"></i> Premiação: R$ {{ $championship->award }},00</p>
                 </div>
 
                 <div class="container mb-5">

@@ -44,8 +44,8 @@
                 <div class="col-lg-6 mb-3">
                     <div class="card text-white card-infos">
                         <div class="card-body">
-                          <h5 class="card-title">Escolha o formato</h5>
-                          <p class="card-text">Você poderá escolher como será o formato do seu campeonato.</p>
+                          <h5 class="card-title">Tabela de classificação</h5>
+                          <p class="card-text">Tenha uma tabela de classificação com todos os times do campeonato.</p>
                         </div>
                     </div>
                 </div>
